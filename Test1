@@ -1,4 +1,4 @@
--- Gui to Luaabc
+-- Gui to Lua
 -- Version: 3.2
 
 -- Instances:
@@ -10,7 +10,6 @@ local SecondaryFrame = Instance.new("Frame")
 local Templatebbc = Instance.new("TextLabel")
 local Folder = Instance.new("Folder")
 local Template = Instance.new("TextButton")
-local Viewing = Instance.new("BoolValue")
 
 --Properties:
 
@@ -69,12 +68,13 @@ Template.TextSize = 14.000
 Template.TextStrokeTransparency = 0.000
 Template.TextWrapped = true
 
+local Viewing = Instance.new("BoolValue")
 Viewing.Name = "Viewing"
 Viewing.Parent = Template
 
 -- Scripts:
 
-local function NJHGMYJ_fake_script() -- MainFrame.Drag 
+local function ADFVIP_fake_script() -- MainFrame.Drag 
 	local script = Instance.new('LocalScript', MainFrame)
 
 	local UserInputService = game:GetService("UserInputService")
@@ -131,8 +131,8 @@ local function NJHGMYJ_fake_script() -- MainFrame.Drag
 	
 	runService.Heartbeat:Connect(Update)
 end
-coroutine.wrap(NJHGMYJ_fake_script)()
-local function GWAASU_fake_script() -- Folder.LocalScript 
+coroutine.wrap(ADFVIP_fake_script)()
+local function FLWDCJ_fake_script() -- Folder.LocalScript 
 	local script = Instance.new('LocalScript', Folder)
 
 	local ScreenGui = script.Parent.Parent.MainFrame
@@ -161,8 +161,8 @@ local function GWAASU_fake_script() -- Folder.LocalScript
 		end
 	end)
 end
-coroutine.wrap(GWAASU_fake_script)()
-local function MBNKX_fake_script() -- _7083G2222.Main 
+coroutine.wrap(FLWDCJ_fake_script)()
+local function FIHK_fake_script() -- _7083G2222.Main 
 	local script = Instance.new('LocalScript', _7083G2222)
 
 	script.Parent.Name = ""..math.random(1,10000).."G"..math.random(1,4000)
@@ -170,37 +170,34 @@ local function MBNKX_fake_script() -- _7083G2222.Main
 	repeat wait() until game.Players.LocalPlayer.PlayerGui:FindFirstChild("LeaderboardGui")
 	
 	for i,v in pairs(game.Players:GetChildren()) do
-	
-	repeat wait() until v:FindFirstChild("leaderstats")
-	repeat wait() until v.leaderstats:FindFirstChild("Lord")
-	
+
+		local EnemyPlayer = v
+			
 		local Gui = script.Parent.Template:Clone()
-		Gui.Name = v.Name
-		Gui.Text = "("..v.Name..") "..v:WaitForChild("leaderstats").Lord.Value.." "..v:WaitForChild("leaderstats").FirstName.Value.." "..v:WaitForChild("leaderstats").LastName.Value.." "..v:WaitForChild("leaderstats").UberTitle.Value
+		Gui.Name = EnemyPlayer.Name
+		Gui.Text = "("..EnemyPlayer.Name..") "..EnemyPlayer:WaitForChild("leaderstats"):WaitForChild("Lord").Value.." "..EnemyPlayer:WaitForChild("leaderstats"):WaitForChild("FirstName").Value.." "..EnemyPlayer:WaitForChild("leaderstats"):WaitForChild("LastName").Value.." "..EnemyPlayer:WaitForChild("leaderstats"):WaitForChild("UberTitle").Value
 		Gui.Parent = script.Parent.MainFrame
 		Gui.Visible = true
 		local Original = Instance.new("StringValue")
 		Original.Parent = Gui
 		Original.Name = "PlayerName"
-		Original.Value = v.Name
-	
+		Original.Value = EnemyPlayer.Name
 	end
 	--game.Workspace.Camera.CameraSubject = v.Character.Humanoid
 	game.Players.PlayerAdded:Connect(function(Player)
+		
 	
+			local EnemyPlayer = Player
 	
-		repeat wait() until v:FindFirstChild("leaderstats")
-	repeat wait() until v.leaderstats:FindFirstChild("Lord")
-	
-		local Gui = script.Parent.Template:Clone()
-		Gui.Name = Player.Name
-		Gui.Text = "("..Player.Name..") "..Player:WaitForChild("leaderstats").Lord.Value.." "..Player:WaitForChild("leaderstats").FirstName.Value.." "..Player:WaitForChild("leaderstats").LastName.Value.." "..Player:WaitForChild("leaderstats").UberTitle.Value
-		Gui.Parent = script.Parent.MainFrame
-		Gui.Visible = true
-		local Original = Instance.new("StringValue")
-		Original.Parent = Gui
-		Original.Name = "PlayerName"
-		Original.Value = Player.Name
+			local Gui = script.Parent.Template:Clone()
+			Gui.Name = EnemyPlayer.Name
+		Gui.Text = "("..EnemyPlayer.Name..") "..EnemyPlayer:WaitForChild("leaderstats"):WaitForChild("Lord").Value.." "..EnemyPlayer:WaitForChild("leaderstats"):WaitForChild("FirstName").Value.." "..EnemyPlayer:WaitForChild("leaderstats"):WaitForChild("LastName").Value.." "..EnemyPlayer:WaitForChild("leaderstats"):WaitForChild("UberTitle").Value
+			Gui.Parent = script.Parent.MainFrame
+			Gui.Visible = true
+			local Original = Instance.new("StringValue")
+			Original.Parent = Gui
+			Original.Name = "PlayerName"
+			Original.Value = EnemyPlayer.Name
 	
 	end)
 	
@@ -216,14 +213,14 @@ local function MBNKX_fake_script() -- _7083G2222.Main
 	
 	end)
 end
-coroutine.wrap(MBNKX_fake_script)()
-local function WFSM_fake_script() -- _7083G2222.Warning 
+coroutine.wrap(FIHK_fake_script)()
+local function BGCGJN_fake_script() -- _7083G2222.Warning 
 	local script = Instance.new('LocalScript', _7083G2222)
 
 	local Thing = script.Parent.Templatebbc:Clone()
 	Thing.Visible = true
 	Thing.Parent = script.Parent.SecondaryFrame
-	game.Debris:AddItem(Thing,8)
+	game.Debris:AddItem(Thing,2)
 	
 	local Off = false
 	
@@ -249,11 +246,10 @@ local function WFSM_fake_script() -- _7083G2222.Warning
 	
 	end)
 end
-coroutine.wrap(WFSM_fake_script)()
-local function XYLI_fake_script() -- _7083G2222.ViewHP 
+coroutine.wrap(BGCGJN_fake_script)()
+local function NFVP_fake_script() -- _7083G2222.ViewHP 
 	local script = Instance.new('LocalScript', _7083G2222)
 
-	while true do
 	
 	local Live = workspace.Live
 	for i,v in pairs(Live:GetChildren()) do
@@ -274,12 +270,9 @@ local function XYLI_fake_script() -- _7083G2222.ViewHP
 	
 		end)
 		
-		task.wait(5)
-		
-		end
 end
-coroutine.wrap(XYLI_fake_script)()
-local function ZWET_fake_script() -- _7083G2222.ToggleGoldName 
+coroutine.wrap(NFVP_fake_script)()
+local function EGSDH_fake_script() -- _7083G2222.ToggleGoldName 
 	local script = Instance.new('LocalScript', _7083G2222)
 
 	repeat wait() until game.Players.LocalPlayer.PlayerGui:FindFirstChild("LeaderboardGui")
@@ -312,4 +305,4 @@ local function ZWET_fake_script() -- _7083G2222.ToggleGoldName
 		
 	end)
 end
-coroutine.wrap(ZWET_fake_script)()
+coroutine.wrap(EGSDH_fake_script)()
