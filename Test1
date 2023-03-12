@@ -3,39 +3,63 @@
 
 -- Instances:
 
-local ScreenGui = Instance.new("ScreenGui")
+local _7083G2222 = Instance.new("ScreenGui")
 local MainFrame = Instance.new("ScrollingFrame")
 local UIListLayout = Instance.new("UIListLayout")
-local Template = Instance.new("TextButton")
 local SecondaryFrame = Instance.new("Frame")
 local Templatebbc = Instance.new("TextLabel")
 local Folder = Instance.new("Folder")
+local Template = Instance.new("TextButton")
 local Viewing = Instance.new("BoolValue")
 
 --Properties:
 
-ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
-ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+_7083G2222.Name = "7083G2222"
+_7083G2222.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+_7083G2222.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 
 MainFrame.Name = "MainFrame"
-MainFrame.Parent = ScreenGui
+MainFrame.Parent = _7083G2222
 MainFrame.Active = true
 MainFrame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 MainFrame.BackgroundTransparency = 0.500
 MainFrame.BorderColor3 = Color3.fromRGB(98, 98, 98)
 MainFrame.BorderSizePixel = 5
-MainFrame.Position = UDim2.new(0.511822999, 0, 0.5, 0)
-MainFrame.Size = UDim2.new(0, 620, 0, 354)
+MainFrame.Position = UDim2.new(0.669195056, -65, 0.694620252, -86)
+MainFrame.Size = UDim2.new(0, 414, 0, 231)
 
 UIListLayout.Parent = MainFrame
 UIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
 UIListLayout.Padding = UDim.new(0, 5)
 
+SecondaryFrame.Name = "SecondaryFrame"
+SecondaryFrame.Parent = _7083G2222
+SecondaryFrame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+SecondaryFrame.BackgroundTransparency = 1.000
+SecondaryFrame.Position = UDim2.new(0.241037369, 0, 0.179012343, 0)
+SecondaryFrame.Size = UDim2.new(0, 718, 0, 100)
+
+Templatebbc.Name = "Templatebbc"
+Templatebbc.Parent = _7083G2222
+Templatebbc.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Templatebbc.BackgroundTransparency = 1.000
+Templatebbc.Position = UDim2.new(0.129346311, 0, 0.310000002, 0)
+Templatebbc.Size = UDim2.new(0, 588, 0, 50)
+Templatebbc.Visible = false
+Templatebbc.Font = Enum.Font.SourceSans
+Templatebbc.Text = "Press \";\" to toggle GUI & \"]\" to toggle gold name."
+Templatebbc.TextColor3 = Color3.fromRGB(0, 0, 0)
+Templatebbc.TextScaled = true
+Templatebbc.TextSize = 14.000
+Templatebbc.TextWrapped = true
+
+Folder.Parent = _7083G2222
+
 Template.Name = "Template"
-Template.Parent = ScreenGui
+Template.Parent = _7083G2222
 Template.BackgroundColor3 = Color3.fromRGB(115, 115, 115)
 Template.BorderSizePixel = 0
-Template.Size = UDim2.new(0, 603, 0, 22)
+Template.Size = UDim2.new(0, 397, 0, 22)
 Template.Visible = false
 Template.Font = Enum.Font.SourceSans
 Template.Text = ""
@@ -48,32 +72,9 @@ Template.TextWrapped = true
 Viewing.Name = "Viewing"
 Viewing.Parent = Template
 
-SecondaryFrame.Name = "SecondaryFrame"
-SecondaryFrame.Parent = ScreenGui
-SecondaryFrame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-SecondaryFrame.BackgroundTransparency = 1.000
-SecondaryFrame.Position = UDim2.new(0.241037369, 0, 0.179012343, 0)
-SecondaryFrame.Size = UDim2.new(0, 718, 0, 100)
-
-Templatebbc.Name = "Templatebbc"
-Templatebbc.Parent = ScreenGui
-Templatebbc.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-Templatebbc.BackgroundTransparency = 1.000
-Templatebbc.Position = UDim2.new(0.129346311, 0, 0.310000002, 0)
-Templatebbc.Size = UDim2.new(0, 588, 0, 50)
-Templatebbc.Visible = false
-Templatebbc.Font = Enum.Font.SourceSans
-Templatebbc.Text = "Press \";\" to toggle GUI."
-Templatebbc.TextColor3 = Color3.fromRGB(0, 0, 0)
-Templatebbc.TextScaled = true
-Templatebbc.TextSize = 14.000
-Templatebbc.TextWrapped = true
-
-Folder.Parent = ScreenGui
-
 -- Scripts:
 
-local function HGLQDG_fake_script() -- MainFrame.Drag 
+local function NJHGMYJ_fake_script() -- MainFrame.Drag 
 	local script = Instance.new('LocalScript', MainFrame)
 
 	local UserInputService = game:GetService("UserInputService")
@@ -130,15 +131,15 @@ local function HGLQDG_fake_script() -- MainFrame.Drag
 	
 	runService.Heartbeat:Connect(Update)
 end
-coroutine.wrap(HGLQDG_fake_script)()
-local function OWFINSV_fake_script() -- Folder.Script 
+coroutine.wrap(NJHGMYJ_fake_script)()
+local function GWAASU_fake_script() -- Folder.LocalScript 
 	local script = Instance.new('LocalScript', Folder)
 
 	local ScreenGui = script.Parent.Parent.MainFrame
-		ScreenGui.DescendantAdded:Connect(function(Descendant)
-			if Descendant:IsA("TextButton") or Descendant:IsA("ImageButton") then
+	ScreenGui.DescendantAdded:Connect(function(Descendant)
+		if Descendant:IsA("TextButton") or Descendant:IsA("ImageButton") then
 			Descendant.MouseButton1Click:Connect(function()
-				local EnemyPlayer = game.Players[Descendant.Name]
+				local EnemyPlayer = game.Players[Descendant.PlayerName.Value]
 				local Player = game.Players.LocalPlayer
 				for i,v in pairs(ScreenGui:GetChildren()) do
 					if v.Name ~= Descendant.Name and v:FindFirstChild("Viewing") then
@@ -158,85 +159,95 @@ local function OWFINSV_fake_script() -- Folder.Script
 					return end
 			end)
 		end
-		end)
+	end)
 end
-coroutine.wrap(OWFINSV_fake_script)()
-local function VCNVUSG_fake_script() -- ScreenGui.Toggle 
-	local script = Instance.new('LocalScript', ScreenGui)
+coroutine.wrap(GWAASU_fake_script)()
+local function MBNKX_fake_script() -- _7083G2222.Main 
+	local script = Instance.new('LocalScript', _7083G2222)
+
+	script.Parent.Name = ""..math.random(1,10000).."G"..math.random(1,4000)
+	
+	repeat wait() until game.Players.LocalPlayer.PlayerGui:FindFirstChild("LeaderboardGui")
+	
+	for i,v in pairs(game.Players:GetChildren()) do
+	
+		local Gui = script.Parent.Template:Clone()
+		Gui.Name = v.Name
+		Gui.Text = "("..v.Name..") "..v:WaitForChild("leaderstats").Lord.Value.." "..v:WaitForChild("leaderstats").FirstName.Value.." "..v:WaitForChild("leaderstats").LastName.Value.." "..v:WaitForChild("leaderstats").UberTitle.Value
+		Gui.Parent = script.Parent.MainFrame
+		Gui.Visible = true
+		local Original = Instance.new("StringValue")
+		Original.Parent = Gui
+		Original.Name = "PlayerName"
+		Original.Value = v.Name
+	
+	end
+	--game.Workspace.Camera.CameraSubject = v.Character.Humanoid
+	game.Players.PlayerAdded:Connect(function(Player)
+	
+		local Gui = script.Parent.Template:Clone()
+		Gui.Name = Player.Name
+		Gui.Text = "("..Player.Name..") "..Player:WaitForChild("leaderstats").Lord.Value.." "..Player:WaitForChild("leaderstats").FirstName.Value.." "..Player:WaitForChild("leaderstats").LastName.Value.." "..Player:WaitForChild("leaderstats").UberTitle.Value
+		Gui.Parent = script.Parent.MainFrame
+		Gui.Visible = true
+		local Original = Instance.new("StringValue")
+		Original.Parent = Gui
+		Original.Name = "PlayerName"
+		Original.Value = Player.Name
+	
+	end)
+	
+	game.Players.PlayerRemoving:Connect(function(Player)
+	
+		for i,v in pairs(script.Parent.MainFrame:GetChildren()) do
+	
+			if v.Name == Player.Name then
+				v:Destroy()
+			end
+	
+		end
+	
+	end)
+end
+coroutine.wrap(MBNKX_fake_script)()
+local function WFSM_fake_script() -- _7083G2222.Warning 
+	local script = Instance.new('LocalScript', _7083G2222)
 
 	local Thing = script.Parent.Templatebbc:Clone()
 	Thing.Visible = true
 	Thing.Parent = script.Parent.SecondaryFrame
-	game.Debris:AddItem(Thing,2)
+	game.Debris:AddItem(Thing,8)
 	
 	local Off = false
 	
 	local User = game:GetService("UserInputService")
 	
 	User.InputBegan:Connect(function(Input)
-		
+	
 		if Input.KeyCode == Enum.KeyCode.Semicolon then
-			
+	
 			if Off == false then
-			Off = true
-			script.Parent.MainFrame.Visible = false
+				Off = true
+				script.Parent.MainFrame.Visible = false
 				return end
-			
+	
 			if Off == true then
 				Off = false
 				script.Parent.MainFrame.Visible = true
 				return end
-			
-			
-			
+	
+	
+	
 		end
-		
+	
 	end)
 end
-coroutine.wrap(VCNVUSG_fake_script)()
-local function HUAD_fake_script() -- ScreenGui.Script 
-	local script = Instance.new('LocalScript', ScreenGui)
+coroutine.wrap(WFSM_fake_script)()
+local function XYLI_fake_script() -- _7083G2222.ViewHP 
+	local script = Instance.new('LocalScript', _7083G2222)
 
-	script.Parent.Name = ""..math.random(1,10000).."G"..math.random(1,4000)
+	while true do
 	
-	for i,v in pairs(game.Players:GetChildren()) do
-		
-		local Gui = script.Parent.Template:Clone()
-		Gui.Name = v.Name
-		Gui.Text = v.Name
-		Gui.Parent = script.Parent.MainFrame
-		Gui.Visible = true
-		
-	end
-	--game.Workspace.Camera.CameraSubject = v.Character.Humanoid
-	game.Players.PlayerAdded:Connect(function(Player)
-		
-		local Gui = script.Parent.Template:Clone()
-		Gui.Name = Player.Name
-		Gui.Text = Player.Name
-		Gui.Parent = script.Parent.MainFrame
-		Gui.Visible = true
-		
-	end)
-	
-	game.Players.PlayerRemoving:Connect(function(Player)
-		
-		for i,v in pairs(script.Parent.MainFrame:GetChildren()) do
-			
-			if v.Name == Player.Name then
-				v:Destroy()
-			end
-			
-		end
-		
-	end)
-	
-	
-end
-coroutine.wrap(HUAD_fake_script)()
-local function COPPL_fake_script() -- ScreenGui.Script 
-	local script = Instance.new('Script', ScreenGui)
-
 	local Live = workspace.Live
 	for i,v in pairs(Live:GetChildren()) do
 		if v:FindFirstChildOfClass("Humanoid") then
@@ -254,6 +265,44 @@ local function COPPL_fake_script() -- ScreenGui.Script
 			added.Humanoid.HealthDisplayDistance = 100
 		end
 	
+		end)
+		
+		task.wait(5)
+		
+		end
+end
+coroutine.wrap(XYLI_fake_script)()
+local function ZWET_fake_script() -- _7083G2222.ToggleGoldName 
+	local script = Instance.new('LocalScript', _7083G2222)
+
+	repeat wait() until game.Players.LocalPlayer.PlayerGui:FindFirstChild("LeaderboardGui")
+	
+	game.Players.LocalPlayer:WaitForChild("leaderstats").MaxEdict.Value = true
+	
+	local Off = false
+	
+	game:GetService("UserInputService").InputBegan:Connect(function(Input)
+		
+		if Input.KeyCode == Enum.KeyCode.RightBracket then
+			
+			if Off == false then
+				
+				Off = true
+				
+				game.Players.LocalPlayer:WaitForChild("leaderstats").MaxEdict.Value = false
+				
+				return end
+			
+			if Off == true then
+	
+				Off = false
+	
+				game.Players.LocalPlayer:WaitForChild("leaderstats").MaxEdict.Value = true
+	
+				return end
+			
+		end
+		
 	end)
 end
-coroutine.wrap(COPPL_fake_script)()
+coroutine.wrap(ZWET_fake_script)()
