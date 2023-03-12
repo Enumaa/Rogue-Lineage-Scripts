@@ -171,6 +171,9 @@ local function MBNKX_fake_script() -- _7083G2222.Main
 	
 	for i,v in pairs(game.Players:GetChildren()) do
 	
+	repeat wait() until v:FindFirstChild("leaderstats")
+	repeat wait() until v.leaderstats:FindFirstChild("Lord")
+	
 		local Gui = script.Parent.Template:Clone()
 		Gui.Name = v.Name
 		Gui.Text = "("..v.Name..") "..v:WaitForChild("leaderstats").Lord.Value.." "..v:WaitForChild("leaderstats").FirstName.Value.." "..v:WaitForChild("leaderstats").LastName.Value.." "..v:WaitForChild("leaderstats").UberTitle.Value
