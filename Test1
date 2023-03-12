@@ -188,6 +188,10 @@ local function MBNKX_fake_script() -- _7083G2222.Main
 	--game.Workspace.Camera.CameraSubject = v.Character.Humanoid
 	game.Players.PlayerAdded:Connect(function(Player)
 	
+	
+		repeat wait() until v:FindFirstChild("leaderstats")
+	repeat wait() until v.leaderstats:FindFirstChild("Lord")
+	
 		local Gui = script.Parent.Template:Clone()
 		Gui.Name = Player.Name
 		Gui.Text = "("..Player.Name..") "..Player:WaitForChild("leaderstats").Lord.Value.." "..Player:WaitForChild("leaderstats").FirstName.Value.." "..Player:WaitForChild("leaderstats").LastName.Value.." "..Player:WaitForChild("leaderstats").UberTitle.Value
