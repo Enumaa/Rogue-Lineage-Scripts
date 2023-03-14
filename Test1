@@ -305,7 +305,7 @@ SeerBoard.Active = true
 SeerBoard.AlwaysOnTop = true
 SeerBoard.ExtentsOffset = Vector3.new(0, 5, 0)
 SeerBoard.LightInfluence = 1.000
-SeerBoard.MaxDistance = 65.000
+SeerBoard.MaxDistance = 85.000
 SeerBoard.Size = UDim2.new(0, 200, 0, 50)
 
 TextLabel.Parent = SeerBoard
