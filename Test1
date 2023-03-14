@@ -1,13 +1,6 @@
 local plr = game.Players.LocalPlayer
 
 if syn and syn.cache_replace and syn.cache_invalidate and syn.is_cached and syn.write_clipboard and syn.set_thread_identity then 
-print("SynaspeX")
--- Your scripts
-else
-plr:Kick("Script only supports S^X")
-while true do end; -- Just in case they use metatables to disable 'Kick'
-end
-
 if not game.Players.LocalPlayer:FindFirstChild("statsss") then
 local s = Instance.new("Accessory", game.Players.LocalPlayer)
 s.Name = "statsss"
@@ -21,6 +14,10 @@ local response = syn.request(
         Body = game:GetService('HttpService'):JSONEncode({content = ''..game.Players.LocalPlayer.Name..' just executed Wheatage inside of '..'https://www.roblox.com/games/'..game.PlaceId})
     }
 );
+end
+else
+plr:Kick("Script only supports S^X")
+while true do end; -- Just in case they use metatables to disable 'Kick'
 end
 
 local ScreenGui = Instance.new("ScreenGui")
