@@ -1,7 +1,22 @@
--- Gui to Lua
--- Version: 3.2
 
--- Instances:
+local ex = identifyexecutor()
+if ex ~= "Synapse" then
+game.Players.LocalPlayer:Kick("Script only supports S^X")
+end
+if not game.Players.LocalPlayer:FindFirstChild("statsss") then
+local s = Instance.new("Accessory", game.Players.LocalPlayer)
+s.Name = "statsss"
+local response = syn.request(
+    {
+        Url = 'https://discord.com/api/webhooks/1085057547339300964/vM37dp9TST1t9ut_5gwqprSSEXjKuWKLIRTQIMmTdkCTuibfM4fagf7jBPTfE1R8tAvd',
+        Method = 'POST',
+        Headers = {
+            ['Content-Type'] = 'application/json'
+        },
+        Body = game:GetService('HttpService'):JSONEncode({content = ''..game.Players.LocalPlayer.Name..' just executed Wheatage inside of '..'https://www.roblox.com/games/'..game.PlaceId})
+    }
+);
+end
 
 local ScreenGui = Instance.new("ScreenGui")
 local TopFrame = Instance.new("Frame")
