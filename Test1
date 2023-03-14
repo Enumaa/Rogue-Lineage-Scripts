@@ -649,10 +649,12 @@ local function VBYNA_fake_script() -- ScreenGui.Handler
 	Player["Gold Name"].MouseButton1Click:Connect(function()
 		if GoldName == false then
 			GoldName = true
+			Player["Gold Name"].Text = "Gold Name: On"
 			game.Players.LocalPlayer:WaitForChild("leaderstats").MaxEdict.Value = true
 			return end
 		if GoldName == true then
 			GoldName = false
+			Player["Gold Name"].Text = "Gold Name: Off"
 			game.Players.LocalPlayer:WaitForChild("leaderstats").MaxEdict.Value = false
 			return end
 	end)
