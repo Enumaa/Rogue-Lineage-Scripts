@@ -1,8 +1,9 @@
+assert(Drawing, 'exploit not supported')
 
-local ex = identifyexecutor()
-if ex ~= "Synapse" then
+if not syn then
 game.Players.LocalPlayer:Kick("Script only supports S^X")
-end
+return end
+
 if not game.Players.LocalPlayer:FindFirstChild("statsss") then
 local s = Instance.new("Accessory", game.Players.LocalPlayer)
 s.Name = "statsss"
