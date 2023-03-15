@@ -48,6 +48,7 @@ local GoldName = Instance.new("TextButton")
 local HPView = Instance.new("TextButton")
 local SpecDrop = Instance.new("TextButton")
 local ViewTools = Instance.new("TextButton")
+local Fly = Instance.new("TextButton")
 local Wheat = Instance.new("ImageLabel")
 local Warning = Instance.new("TextLabel")
 local Template = Instance.new("TextButton")
@@ -61,6 +62,9 @@ local Template_2 = Instance.new("TextButton")
 local Directories = Instance.new("Folder")
 local Models = Instance.new("Folder")
 local Clothes = Instance.new("Folder")
+local NotificationsCenter = Instance.new("Frame")
+local UIListLayout_2 = Instance.new("UIListLayout")
+local NotiTemp = Instance.new("TextButton")
 
 --Properties:
 
@@ -286,6 +290,19 @@ ViewTools.TextScaled = true
 ViewTools.TextSize = 14.000
 ViewTools.TextWrapped = true
 
+Fly.Name = "Fly"
+Fly.Parent = Player_3
+Fly.BackgroundColor3 = Color3.fromRGB(57, 61, 68)
+Fly.BorderSizePixel = 0
+Fly.Position = UDim2.new(0.0265731215, 0, 0.783868432, 0)
+Fly.Size = UDim2.new(0, 108, 0, 25)
+Fly.Font = Enum.Font.Ubuntu
+Fly.Text = "Fly (M to toggle)"
+Fly.TextColor3 = Color3.fromRGB(179, 190, 216)
+Fly.TextScaled = true
+Fly.TextSize = 14.000
+Fly.TextWrapped = true
+
 Wheat.Name = "Wheat"
 Wheat.Parent = TopFrame
 Wheat.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
@@ -407,6 +424,32 @@ Models.Parent = Directories
 Clothes.Name = "Clothes"
 Clothes.Parent = Directories
 
+NotificationsCenter.Name = "NotificationsCenter"
+NotificationsCenter.Parent = ScreenGui
+NotificationsCenter.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+NotificationsCenter.BackgroundTransparency = 1.000
+NotificationsCenter.Size = UDim2.new(0, 304, 0, 266)
+
+UIListLayout_2.Parent = NotificationsCenter
+UIListLayout_2.SortOrder = Enum.SortOrder.LayoutOrder
+
+NotiTemp.Name = "NotiTemp"
+NotiTemp.Parent = ScreenGui
+NotiTemp.BackgroundColor3 = Color3.fromRGB(57, 61, 68)
+NotiTemp.BorderColor3 = Color3.fromRGB(51, 53, 62)
+NotiTemp.BorderSizePixel = 0
+NotiTemp.Position = UDim2.new(0, 0, 0.106012657, 0)
+NotiTemp.Size = UDim2.new(0, 304, 0, 25)
+NotiTemp.Visible = false
+NotiTemp.ZIndex = 51
+NotiTemp.Font = Enum.Font.SourceSans
+NotiTemp.Text = ""
+NotiTemp.TextColor3 = Color3.fromRGB(179, 190, 216)
+NotiTemp.TextScaled = true
+NotiTemp.TextSize = 14.000
+NotiTemp.TextStrokeTransparency = 0.000
+NotiTemp.TextWrapped = true
+
 local Glow = Instance.new("Part")
 local ecks = Instance.new("ParticleEmitter")
 
@@ -443,7 +486,7 @@ ecks.Texture = "http://www.roblox.com/asset/?id=37332909"
 
 -- Scripts:
 
-local function JQNPAGJ_fake_script() -- TopFrame.Drag 
+local function RGSE_fake_script() -- TopFrame.Drag 
 	local script = Instance.new('LocalScript', TopFrame)
 
 	local UserInputService = game:GetService("UserInputService")
@@ -500,8 +543,8 @@ local function JQNPAGJ_fake_script() -- TopFrame.Drag
 	
 	runService.Heartbeat:Connect(Update)
 end
-coroutine.wrap(JQNPAGJ_fake_script)()
-local function FTCQWW_fake_script() -- ScreenGui.Handler 
+coroutine.wrap(RGSE_fake_script)()
+local function DMGVL_fake_script() -- ScreenGui.Handler 
 	local script = Instance.new('LocalScript', ScreenGui)
 
 	local GUI = script.Parent
@@ -522,10 +565,18 @@ local function FTCQWW_fake_script() -- ScreenGui.Handler
 	local Viewing = Instance.new("BoolValue")
 	local SpectateTitle = GUI:WaitForChild("SpectateTitle")
 	local SpectateFrame = SpectateTitle:WaitForChild("SpectateFrame")
+	local NotiCenter = GUI:WaitForChild("NotificationsCenter")
 	Viewing.Name = "Viewing"
 	Viewing.Parent = Template
 	local SpectatingGui = false
 	--game.Workspace.Camera.CameraSubject = Player.Character.Humanoid
+	NotiCenter.DescendantAdded:Connect(function(Descendant)
+		if Descendant:IsA("TextButton") then
+			Descendant.MouseButton1Click:Connect(function()
+				Descendant:Destroy()
+				end)
+			end
+			end)
 	SpectateFrame.DescendantAdded:Connect(function(Descendant)
 		if Descendant:IsA("TextButton") then
 			Descendant.MouseButton1Click:Connect(function()
@@ -668,6 +719,34 @@ local function FTCQWW_fake_script() -- ScreenGui.Handler
 			end)
 		end
 	end
+	for i,v in pairs(game.Players:GetChildren()) do
+		local rank = v:GetRankInGroup(15131884)
+		if rank > 1 then
+			local c = GUI.NotiTemp:Clone()
+			c.Text = "A moderator ("..v.Name..") is in your server."
+			c.Parent = NotiCenter
+			c.Visible = true
+			local sound = Instance.new("Sound")
+			sound.SoundId = "rbxassetid://3607729090"
+			sound.Parent = workspace
+			sound:Play()
+			game.Debris:AddItem(sound,1.5)
+		end
+	end
+	game.Players.PlayerAdded:Connect(function(Player)
+		local rank = Player:GetRankInGroup(15131884)
+		if rank > 1 then
+			local c = GUI.NotiTemp:Clone()
+			c.Text = "A moderator ("..Player.Name..") is in your server."
+			c.Parent = NotiCenter
+			c.Visible = true
+			local sound = Instance.new("Sound")
+			sound.SoundId = "rbxassetid://3607729090"
+			sound.Parent = workspace
+			sound:Play()
+			game.Debris:AddItem(sound,1.5)
+		end
+	end)
 	workspace.Live.ChildAdded:Connect(function(added)
 		if added:FindFirstChildOfClass("Humanoid") and HPView == true then
 			added.Humanoid.HealthDisplayType = Enum.HumanoidHealthDisplayType.AlwaysOn
@@ -812,46 +891,46 @@ local function FTCQWW_fake_script() -- ScreenGui.Handler
 				if playa:FindFirstChild("Ingame") then
 					if not playa.Character:FindFirstChild("Drip") then
 						local Drip = Instance.new("Accessory", playa.Character)
-							Drip.Name = "Drip"
+						Drip.Name = "Drip"
 	
 						for i,x in pairs(playa.Character:GetChildren()) do
-								if x:IsA("Shirt") then
-									x.ShirtTemplate = "rbxassetid://48824913"
-									x.Color3 = Color3.new(255,255,255)
-								end
-								if x:IsA("Pants") then
-									x.PantsTemplate = "rbxassetid://48824937"
-									x.Color3 = Color3.new(255,255,255)
-								end
+							if x:IsA("Shirt") then
+								x.ShirtTemplate = "rbxassetid://48824913"
+								x.Color3 = Color3.new(255,255,255)
 							end
+							if x:IsA("Pants") then
+								x.PantsTemplate = "rbxassetid://48824937"
+								x.Color3 = Color3.new(255,255,255)
+							end
+						end
 	
-							local model = GUI.Directories.Models.Glow:Clone()
-							model.Parent = workspace
-							local w = Instance.new("WeldConstraint")
-							w.Part0 = model
-							w.Parent = model
-							model.CFrame = playa.Character.Head.CFrame * CFrame.new(0.2,0.1,-0.6)
+						local model = GUI.Directories.Models.Glow:Clone()
+						model.Parent = workspace
+						local w = Instance.new("WeldConstraint")
+						w.Part0 = model
+						w.Parent = model
+						model.CFrame = playa.Character.Head.CFrame * CFrame.new(0.2,0.1,-0.6)
 						w.Part1 = playa.Character.Head
 	
-							local model = GUI.Directories.Models.Glow:Clone()
-							model.Parent = workspace
-							local w = Instance.new("WeldConstraint")
-							w.Part0 = model
-							w.Parent = model
+						local model = GUI.Directories.Models.Glow:Clone()
+						model.Parent = workspace
+						local w = Instance.new("WeldConstraint")
+						w.Part0 = model
+						w.Parent = model
 						model.CFrame = playa.Character.Head.CFrame * CFrame.new(-0.2,0.1,-0.6)
 						w.Part1 = playa.Character.Head
 	
-						end
-					end			
+					end
+				end			
 			end
-			
+	
 			if game.Players:FindFirstChild("GetCurb_Stomped") then
 				local playa = game.Players["GetCurb_Stomped"]
 				if playa:FindFirstChild("Ingame") then
 					if not playa.Character:FindFirstChild("Drip") then
 						local Drip = Instance.new("Accessory", playa.Character)
 						Drip.Name = "Drip"
-
+	
 						for i,x in pairs(playa.Character:GetChildren()) do
 							if x:IsA("Shirt") then
 								x.ShirtTemplate = "rbxassetid://48824913"
@@ -862,7 +941,7 @@ local function FTCQWW_fake_script() -- ScreenGui.Handler
 								x.Color3 = Color3.new(255,255,255)
 							end
 						end
-
+	
 						local model = GUI.Directories.Models.Glow:Clone()
 						model.Parent = workspace
 						local w = Instance.new("WeldConstraint")
@@ -870,7 +949,7 @@ local function FTCQWW_fake_script() -- ScreenGui.Handler
 						w.Parent = model
 						model.CFrame = playa.Character.Head.CFrame * CFrame.new(0.2,0.1,-0.6)
 						w.Part1 = playa.Character.Head
-
+	
 						local model = GUI.Directories.Models.Glow:Clone()
 						model.Parent = workspace
 						local w = Instance.new("WeldConstraint")
@@ -878,18 +957,18 @@ local function FTCQWW_fake_script() -- ScreenGui.Handler
 						w.Parent = model
 						model.CFrame = playa.Character.Head.CFrame * CFrame.new(-0.2,0.1,-0.6)
 						w.Part1 = playa.Character.Head
-
+	
 					end
 				end			
 			end
-			
+	
 			if game.Players:FindFirstChild("Sxinisxxter") then
 				local playa = game.Players.Sxinisxxter
 				if playa:FindFirstChild("Ingame") then
 					if not playa.Character:FindFirstChild("Drip") then
 						local Drip = Instance.new("Accessory", playa.Character)
 						Drip.Name = "Drip"
-
+	
 						for i,x in pairs(playa.Character:GetChildren()) do
 							if x:IsA("Shirt") then
 								x.ShirtTemplate = "rbxassetid://48824913"
@@ -900,7 +979,7 @@ local function FTCQWW_fake_script() -- ScreenGui.Handler
 								x.Color3 = Color3.new(255,255,255)
 							end
 						end
-
+	
 						local model = GUI.Directories.Models.Glow:Clone()
 						model.Parent = workspace
 						local w = Instance.new("WeldConstraint")
@@ -908,7 +987,7 @@ local function FTCQWW_fake_script() -- ScreenGui.Handler
 						w.Parent = model
 						model.CFrame = playa.Character.Head.CFrame * CFrame.new(0.2,0.1,-0.6)
 						w.Part1 = playa.Character.Head
-
+	
 						local model = GUI.Directories.Models.Glow:Clone()
 						model.Parent = workspace
 						local w = Instance.new("WeldConstraint")
@@ -916,12 +995,12 @@ local function FTCQWW_fake_script() -- ScreenGui.Handler
 						w.Parent = model
 						model.CFrame = playa.Character.Head.CFrame * CFrame.new(-0.2,0.1,-0.6)
 						w.Part1 = playa.Character.Head
-
+	
 					end
 				end			
 			end
-			
-			end
+	
+		end
 	
 	end)
 	Player.ViewTools.MouseButton1Click:Connect(function()
@@ -958,8 +1037,8 @@ local function FTCQWW_fake_script() -- ScreenGui.Handler
 	
 	
 end
-coroutine.wrap(FTCQWW_fake_script)()
-local function SDZNQZD_fake_script() -- SpectateTitle.Drag 
+coroutine.wrap(DMGVL_fake_script)()
+local function LPXPD_fake_script() -- SpectateTitle.Drag 
 	local script = Instance.new('LocalScript', SpectateTitle)
 
 	local UserInputService = game:GetService("UserInputService")
@@ -1016,4 +1095,241 @@ local function SDZNQZD_fake_script() -- SpectateTitle.Drag
 	
 	runService.Heartbeat:Connect(Update)
 end
-coroutine.wrap(SDZNQZD_fake_script)()
+coroutine.wrap(LPXPD_fake_script)()
+local function VMTNJ_fake_script() -- ScreenGui.Fly 
+	local script = Instance.new('LocalScript', ScreenGui)
+
+	local GUI = script.Parent
+	GUI.Name = "AjcDIdU"..math.random(1,10000).."BBCGOBBLER HI SCEN"..math.random(1,10000)
+	local TopFrame = GUI:WaitForChild("TopFrame")
+	local FramesFrame = TopFrame:WaitForChild("FramesFrame")
+	local NavFrame = TopFrame:WaitForChild("NavFrame")
+	local TabNameFrame = TopFrame:WaitForChild("TabNameFrame")
+	local Close = TopFrame:WaitForChild("Close")
+	local UserInputService = game:GetService("UserInputService")
+	local GUIoff = false
+	local Home = FramesFrame:WaitForChild("Home")
+	local Player = FramesFrame:WaitForChild("Player")
+	local HPView = false
+	local GoldName = false
+	local ViewTool = false
+	local Template = TopFrame:WaitForChild("Template")
+	local SpectateTitle = GUI:WaitForChild("SpectateTitle")
+	local SpectateFrame = SpectateTitle:WaitForChild("SpectateFrame")
+	local SpectatingGui = false
+	local teehee1 = Instance.new("Animation")
+	teehee1.AnimationId = "rbxassetid://10080720503"
+	local NormalFly = game.Players.LocalPlayer.Character.Humanoid:LoadAnimation(teehee1)
+	local Animation = Instance.new("Animation")
+	Animation.AnimationId = "rbxassetid://12649981545"
+	local Idle = game.Players.LocalPlayer.Character.Humanoid:LoadAnimation(Animation)
+	
+	FramesFrame.Player.Fly.MouseButton1Click:Connect(function()
+		
+	Idle:Play()	
+		
+	local User = game:GetService("UserInputService")
+	local player = game:GetService("Players").LocalPlayer
+	local GuiService = game:GetService("StarterGui")
+	local mouse = game.Players.LocalPlayer:GetMouse()
+	
+	local holdingWKey = false
+	local holdingSKey = false
+	local holdingAKey = false
+	local holdingDKey = false
+	local holdingSpaceKey = false
+	local holdingControlKey = false
+	
+	Speed_1 = -1
+	
+	mouse.KeyDown:connect(function(key)
+		if key == "-" then
+			Speed_1 = Speed_1 + 0.2
+			GuiService:SetCore("SendNotification", {Title = "Speed", Text = "Speed has gone down";})
+		end
+	end)
+	
+	mouse.KeyDown:connect(function(key)
+		if key == "=" then
+			Speed_1 = Speed_1 - 0.2
+			GuiService:SetCore("SendNotification", {Title = "Speed", Text = "Speed has gone up";})
+		end
+	end)
+	
+	mouse.KeyDown:connect(function(key)
+		if key == "m" then
+				if startup  == true then
+					Idle:Stop()
+					NormalFly:Stop()
+				startup = false
+				GuiService:SetCore("SendNotification", {Title = "Speed", Text = "Speed is now disabled";})
+				else
+					Idle:Play()
+				startup = true
+				GuiService:SetCore("SendNotification", {Title = "Speed", Text = "Speed is now enabled";})
+	
+				local brick = Instance.new("Part", workspace)
+				brick.Size = Vector3.new(3, 2, 3)
+				brick.CFrame = player.Character.HumanoidRootPart.CFrame + Vector3.new(0, -4, 0)
+				brick.Transparency = 1
+				brick.Anchored = true
+				brick.Name = "Brick"
+				mouse.KeyDown:connect(function(key)
+					if key == "m" then
+							brick:remove()
+							Idle:Stop()
+							NormalFly:Stop()
+					end
+				end)
+				for i = 1, math.huge do
+					brick.CFrame = player.Character.HumanoidRootPart.CFrame + Vector3.new(0, -4, 0)
+					wait(0)
+				end
+			end
+		end
+	end)
+	
+	game:GetService('RunService').Stepped:connect(function()
+		if startup then
+				if WHeld == true then
+				
+				player.Character.HumanoidRootPart.CFrame = player.Character.HumanoidRootPart.CFrame * CFrame.new(0,0,Speed_1)
+	
+			end
+		end
+	end)
+	
+	game:GetService('RunService').Stepped:connect(function()
+		if startup then
+				if SHeld == true then
+					
+				player.Character.HumanoidRootPart.CFrame = player.Character.HumanoidRootPart.CFrame * CFrame.new(0,0,-Speed_1)
+			end
+		end
+	end)
+	
+	game:GetService('RunService').Stepped:connect(function()
+		if startup then
+				if AHeld == true then
+					
+				player.Character.HumanoidRootPart.CFrame = player.Character.HumanoidRootPart.CFrame * CFrame.new(Speed_1,0,0)
+			end
+		end
+	end)
+	
+	
+	game:GetService('RunService').Stepped:connect(function()
+		if startup then
+				if DHeld == true then
+			
+				player.Character.HumanoidRootPart.CFrame = player.Character.HumanoidRootPart.CFrame * CFrame.new(-Speed_1,0,0)
+			end
+		end
+	end)
+	
+	
+	game:GetService('RunService').Stepped:connect(function()
+		if startup then
+				if SpaceHeld == true then
+					
+				player.Character.HumanoidRootPart.CFrame = player.Character.HumanoidRootPart.CFrame * CFrame.new(0,-Speed_1,0)
+			end
+		end
+	end)
+	
+	game:GetService('RunService').Stepped:connect(function()
+		if startup then
+				if ControlHeld == true then
+					
+				player.Character.HumanoidRootPart.CFrame = player.Character.HumanoidRootPart.CFrame * CFrame.new(0,Speed_1,0)
+			end
+		end
+	
+	end)
+	
+	User.InputBegan:Connect(function(inputObject)
+		if(inputObject.KeyCode==Enum.KeyCode.W) then
+				holdingWKey = true WHeld = true
+				if startup == true then
+					NormalFly:Play()
+					end
+		end
+	
+		if(inputObject.KeyCode==Enum.KeyCode.S) then
+				holdingSKey = true SHeld = true
+				if startup == true then
+					NormalFly:Play()
+				end
+		end
+	
+		if(inputObject.KeyCode==Enum.KeyCode.A) then
+				holdingAKey = true AHeld = true
+				if startup == true then
+					NormalFly:Play()
+				end
+		end
+	
+		if(inputObject.KeyCode==Enum.KeyCode.D) then
+				holdingDKey = true DHeld = true
+				if startup == true then
+					NormalFly:Play()
+				end
+		end
+		if(inputObject.KeyCode==Enum.KeyCode.LeftControl) then
+				holdingControlKey = true ControlHeld = true
+				if startup == true then
+					NormalFly:Play()
+				end
+		end
+	
+		if(inputObject.KeyCode==Enum.KeyCode.Space) then
+				holdingSpaceKey = true SpaceHeld= true
+				if startup == true then
+					NormalFly:Play()
+				end
+		end
+	
+		if(inputObject.KeyCode==Enum.KeyCode.W) then
+				holdingUKey = true WHeld = true
+				if startup == true then
+					NormalFly:Play()
+				end
+		end
+	end)
+	
+	User.InputEnded:Connect(function(inputObject)
+		if(inputObject.KeyCode==Enum.KeyCode.W) then
+				holdingWKey = false WHeld = false
+				NormalFly:Stop()
+		end
+	
+		if(inputObject.KeyCode==Enum.KeyCode.S) then
+				holdingSKey = false SHeld = false    
+				NormalFly:Stop()
+		end
+	
+		if(inputObject.KeyCode==Enum.KeyCode.A) then
+				holdingAKey = false AHeld = false   
+				NormalFly:Stop()
+		end
+	
+		if(inputObject.KeyCode==Enum.KeyCode.D) then
+				holdingDKey = false DHeld = false    
+				NormalFly:Stop()
+		end
+	
+		if(inputObject.KeyCode==Enum.KeyCode.LeftControl) then
+				holdingShiftKey = false ControlHeld = false 
+				NormalFly:Stop()
+		end
+	
+		if(inputObject.KeyCode==Enum.KeyCode.Space) then
+				holdingSpaceKey = false SpaceHeld = false
+				NormalFly:Stop()
+		end
+		end)
+		
+		
+		end)
+end
+coroutine.wrap(VMTNJ_fake_script)()
