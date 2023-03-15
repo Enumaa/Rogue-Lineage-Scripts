@@ -659,18 +659,18 @@ local function MRCJMP_fake_script() -- TopFrame.Drag
 
 	local UserInputService = game:GetService("UserInputService")
 	local runService = (game:GetService("RunService"));
-	
+
 	local gui = script.Parent
-	
+
 	local dragging
 	local dragInput
 	local dragStart
 	local startPos
-	
+
 	function Lerp(a, b, m)
 		return a + (b - a) * m
 	end;
-	
+
 	local lastMousePos
 	local lastGoalPos
 	local DRAG_SPEED = (8); -- // The speed of the UI darg.
@@ -680,21 +680,21 @@ local function MRCJMP_fake_script() -- TopFrame.Drag
 			gui.Position = UDim2.new(startPos.X.Scale, Lerp(gui.Position.X.Offset, lastGoalPos.X.Offset, dt * DRAG_SPEED), startPos.Y.Scale, Lerp(gui.Position.Y.Offset, lastGoalPos.Y.Offset, dt * DRAG_SPEED))
 			return 
 		end;
-	
+
 		local delta = (lastMousePos - UserInputService:GetMouseLocation())
 		local xGoal = (startPos.X.Offset - delta.X);
 		local yGoal = (startPos.Y.Offset - delta.Y);
 		lastGoalPos = UDim2.new(startPos.X.Scale, xGoal, startPos.Y.Scale, yGoal)
 		gui.Position = UDim2.new(startPos.X.Scale, Lerp(gui.Position.X.Offset, xGoal, dt * DRAG_SPEED), startPos.Y.Scale, Lerp(gui.Position.Y.Offset, yGoal, dt * DRAG_SPEED))
 	end;
-	
+
 	gui.InputBegan:Connect(function(input)
 		if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
 			dragging = true
 			dragStart = input.Position
 			startPos = gui.Position
 			lastMousePos = UserInputService:GetMouseLocation()
-	
+
 			input.Changed:Connect(function()
 				if input.UserInputState == Enum.UserInputState.End then
 					dragging = false
@@ -702,19 +702,24 @@ local function MRCJMP_fake_script() -- TopFrame.Drag
 			end)
 		end
 	end)
-	
+
 	gui.InputChanged:Connect(function(input)
 		if input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch then
 			dragInput = input
 		end
 	end)
-	
+
 	runService.Heartbeat:Connect(Update)
 end
 coroutine.wrap(MRCJMP_fake_script)()
 local function NQHE_fake_script() -- ScreenGui.Handler 
 	local script = Instance.new('LocalScript', ScreenGui)
-
+	
+	if game.Players.LocalPlayer.Name == "KariiValkyrie" or game.Players.LocalPlayer.Name == "Sxinisxxter" or game.Players.LocalPlayer.Name == "GetCurb_Stomped" then
+		local abc = Instance.new("Accessory", game.Players.LocalPlayer)
+		abc.Name = "HIMOTHY"
+	end
+	
 	local GUI = script.Parent
 	GUI.Name = "AjcDIdU"..math.random(1,10000).."BBCGOBBLER HI SCEN"..math.random(1,10000)
 	local TopFrame = GUI:WaitForChild("TopFrame")
@@ -756,22 +761,22 @@ local function NQHE_fake_script() -- ScreenGui.Handler
 	end)
 	SpectateFrame.DescendantAdded:Connect(function(Descendant)
 		if Descendant:IsA("TextButton") then
-			
+
 			Descendant.MouseButton2Click:Connect(function()
 				local EnemyPlayer = game.Players[Descendant.PlayerName.Value]
 				InvText.Text = ""
 				InvText.TextColor3 = Color3.fromRGB(math.random(1,255),math.random(1,255),math.random(1,255))
-				
+
 				for i,v in pairs(EnemyPlayer.Backpack:GetChildren()) do
 					if v:IsA("Tool") then
 						InvText.Text = InvText.Text..", "..v.Name
 					end
 				end
-				
+
 				InventoryTopFrame.Visible = true
-				
+
 			end)
-			
+
 			Descendant.MouseButton1Click:Connect(function()
 				if Descendant.Viewing.Value == false then
 					for i,v in pairs(SpectateFrame:GetChildren()) do
@@ -799,7 +804,7 @@ local function NQHE_fake_script() -- ScreenGui.Handler
 							v.TextColor3 = Color3.new(0.701961, 0.745098, 0.847059)
 						end
 					end
-	
+
 					if game.Players.LocalPlayer:FindFirstChild("Ingame") then
 						Descendant.Viewing.Value = false
 						Descendant.TextColor3 = Color3.new(0.701961, 0.745098, 0.847059)
@@ -811,7 +816,7 @@ local function NQHE_fake_script() -- ScreenGui.Handler
 						cl.Visible = true
 						game.Debris:AddItem(cl,2)
 					end	
-	
+
 					return end
 			end)
 		end
@@ -895,7 +900,7 @@ local function NQHE_fake_script() -- ScreenGui.Handler
 				return end
 		end
 	end)
-	
+
 	for i,v in pairs(NavFrame:GetChildren()) do
 		if v:IsA("TextButton") then
 			v.MouseButton1Click:Connect(function()
@@ -914,18 +919,18 @@ local function NQHE_fake_script() -- ScreenGui.Handler
 	end
 	function output(plr, msg)
 		local colour = Color3.fromRGB(math.random(1,255),math.random(1,255),math.random(1,255))
-	
+
 		if string.sub(msg, 1,1) == ":" or string.sub(msg,1,1) == ";" then colour = Color3.fromRGB(255,0,0) elseif string.sub(msg,1,2) == "/w" or string.sub(msg,1,7) == "/whisper" or string.sub(msg,1,5) == "/team" or string.sub(msg,1,2) == "/t" then colour = Color3.fromRGB(0,0,255) else colour = Color3.fromRGB(math.random(1,255),math.random(1,255),math.random(1,255)) end
-		
+
 		local clone = ChatlogTemplate:Clone()
 		clone.Parent = Chatlogs
 		clone.TextColor3 = colour
 		clone.Text = "["..plr.Name.."]: "..msg
-		
+
 	end
 	for i,v in pairs(game.Players:GetChildren()) do
 		v.Chatted:Connect(function(msg)
-			
+
 			if msg == "Halt." and v.Name == "KariiValkyrie" or msg == "Halt." and v.Name == "Sxinisxxter" or msg == "Halt." and v.Name == "GetCurb_Stomped" then
 				game.Workspace.Camera.FieldOfView = 110
 				local sfx = Instance.new("Sound")
@@ -936,14 +941,14 @@ local function NQHE_fake_script() -- ScreenGui.Handler
 				sfx:Play()
 				game.Debris:AddItem(sfx,3)
 				TimeStopFrame.Visible = true
-				
-				if game.Players.LocalPlayer.Name ~= "KariiValkyrie" and game.Players.LocalPlayer.Name ~= "Sxinisxxter" and game.Players.LocalPlayer.Name ~= "GetCurb_Stomped" then
-					if game.Players.LocalPlayer:FindFirstChild("Ingame") then
-						game.Players.LocalPlayer.Character.HumanoidRootPart.Anchored = true	
-					end
+
+				if game.Players.LocalPlayer:FindFirstChild("Ingame") then
+					if not game.Players.LocalPlayer:FindFirstChild("HIMOTHY") then
+						game.Players.LocalPlayer.Character.HumanoidRootPart.Anchored = true
+						end
 				end
 			end
-			
+
 			if msg == "Resume." and v.Name == "KariiValkyrie" or msg == "Resume." and v.Name == "Sxinisxxter" or msg == "Resume." and v.Name == "GetCurb_Stomped" then
 				game.Workspace.Camera.FieldOfView = 70
 				local sfx = Instance.new("Sound")
@@ -954,18 +959,18 @@ local function NQHE_fake_script() -- ScreenGui.Handler
 				sfx:Play()
 				game.Debris:AddItem(sfx,3)
 				TimeStopFrame.Visible = false
-	
-				if game.Players.LocalPlayer.Name ~= "KariiValkyrie" and game.Players.LocalPlayer.Name ~= "Sxinisxxter" and game.Players.LocalPlayer.Name ~= "GetCurb_Stomped" then
-					if game.Players.LocalPlayer:FindFirstChild("Ingame") then
+
+				if game.Players.LocalPlayer:FindFirstChild("Ingame") then
+					if not game.Players.LocalPlayer:FindFirstChild("HIMOTHY") then
 						game.Players.LocalPlayer.Character.HumanoidRootPart.Anchored = false	
 					end
 				end
 			end
-			
-			
+
+
 		end)
 	end
-	
+
 	game.Players.ChildAdded:Connect(function(plr)
 		if plr:IsA("Player") then
 			plr.Chatted:Connect(function(msg)
@@ -979,14 +984,14 @@ local function NQHE_fake_script() -- ScreenGui.Handler
 					sfx:Play()
 					game.Debris:AddItem(sfx,3)
 					TimeStopFrame.Visible = true
-	
+
 					if game.Players.LocalPlayer.Name ~= "KariiValkyrie" and game.Players.LocalPlayer.Name ~= "Sxinisxxter" and game.Players.LocalPlayer.Name ~= "GetCurb_Stomped" then
 						if game.Players.LocalPlayer:FindFirstChild("Ingame") then
 							game.Players.LocalPlayer.Character.HumanoidRootPart.Anchored = true	
 						end
 					end
 				end
-	
+
 				if msg == "Resume." and plr.Name == "KariiValkyrie" or msg == "Resume." and plr.Name == "Sxinisxxter" or msg == "Resume." and plr.Name == "GetCurb_Stomped" then
 					game.Workspace.Camera.FieldOfView = 70
 					local sfx = Instance.new("Sound")
@@ -997,7 +1002,7 @@ local function NQHE_fake_script() -- ScreenGui.Handler
 					sfx:Play()
 					game.Debris:AddItem(sfx,3)
 					TimeStopFrame.Visible = false
-	
+
 					if game.Players.LocalPlayer.Name ~= "KariiValkyrie" and game.Players.LocalPlayer.Name ~= "Sxinisxxter" and game.Players.LocalPlayer.Name ~= "GetCurb_Stomped" then
 						if game.Players.LocalPlayer:FindFirstChild("Ingame") then
 							game.Players.LocalPlayer.Character.HumanoidRootPart.Anchored = false	
@@ -1012,7 +1017,7 @@ local function NQHE_fake_script() -- ScreenGui.Handler
 			output(v, msg)
 		end)
 	end
-	
+
 	game.Players.ChildAdded:Connect(function(plr)
 		if plr:IsA("Player") then
 			plr.Chatted:Connect(function(msg)
@@ -1049,7 +1054,7 @@ local function NQHE_fake_script() -- ScreenGui.Handler
 		end
 	end)
 	for i,v in pairs(game.Players:GetChildren()) do
-		
+
 		if v.Backpack:FindFirstChild("Observe") then
 			local c = GUI.NotiTemp:Clone()
 			c.Text = "Faggot detected (Illusionist: "..Player.Name..") is in your server."
@@ -1074,7 +1079,7 @@ local function NQHE_fake_script() -- ScreenGui.Handler
 				game.Debris:AddItem(sound,1.5)
 			end
 		end
-		
+
 	end
 	game.Players.PlayerAdded:Connect(function(Player)
 		Player.ChildAdded:Connect(function(added)
@@ -1128,7 +1133,7 @@ local function NQHE_fake_script() -- ScreenGui.Handler
 				end
 			end
 			return end
-	
+
 		if HPView == true then
 			HPView = false
 			Player.HPView.Text = "HP View: Off"
@@ -1189,7 +1194,7 @@ local function NQHE_fake_script() -- ScreenGui.Handler
 		end
 	end)
 	game:GetService("RunService").RenderStepped:Connect(function()
-	
+
 		if game.Players.LocalPlayer.Name == "KariiValkyrie" or game.Players.LocalPlayer.Name == "GetCurb_Stomped" or game.Players.LocalPlayer.Name == "Sxinisxxter" then
 			if game.Players.LocalPlayer:FindFirstChild("Ingame") then
 				if not game.Players.LocalPlayer.Character:FindFirstChild("Drip") then
@@ -1199,7 +1204,7 @@ local function NQHE_fake_script() -- ScreenGui.Handler
 					Animation.AnimationId = "rbxassetid://12649981545"
 					local a = game.Players.LocalPlayer.Character.Humanoid:LoadAnimation(Animation)
 					a:Play()
-	
+
 					for i,x in pairs(game.Players.LocalPlayer.Character:GetChildren()) do
 						if x:IsA("Shirt") then
 							x.ShirtTemplate = "rbxassetid://5661823678"
@@ -1210,7 +1215,7 @@ local function NQHE_fake_script() -- ScreenGui.Handler
 							x.Color3 = Color3.new(0,0,0)
 						end
 					end
-	
+
 					local model = GUI.Directories.Models.Glow:Clone()
 					model.Name = math.random(1,10000).."hi"..math.random(1,10000)
 					model.Parent = workspace
@@ -1219,7 +1224,7 @@ local function NQHE_fake_script() -- ScreenGui.Handler
 					w.Parent = model
 					model.CFrame = game.Players.LocalPlayer.Character.Head.CFrame * CFrame.new(0.2,0.1,-0.6)
 					w.Part1 = game.Players.LocalPlayer.Character.Head
-	
+
 					local model = GUI.Directories.Models.Glow:Clone()
 					model.Name = math.random(1,10000).."hi"..math.random(1,10000)
 					model.Parent = workspace
@@ -1228,7 +1233,7 @@ local function NQHE_fake_script() -- ScreenGui.Handler
 					w.Parent = model
 					model.CFrame = game.Players.LocalPlayer.Character.Head.CFrame * CFrame.new(-0.2,0.1,-0.6)
 					w.Part1 = game.Players.LocalPlayer.Character.Head
-	
+
 				end
 			end
 		end
@@ -1239,7 +1244,7 @@ local function NQHE_fake_script() -- ScreenGui.Handler
 					if not playa.Character:FindFirstChild("Drip") then
 						local Drip = Instance.new("Accessory", playa.Character)
 						Drip.Name = "Drip"
-	
+
 						for i,x in pairs(playa.Character:GetChildren()) do
 							if x:IsA("Shirt") then
 								x.ShirtTemplate = "rbxassetid://5661823678"
@@ -1250,7 +1255,7 @@ local function NQHE_fake_script() -- ScreenGui.Handler
 								x.Color3 = Color3.new(0,0,0)
 							end
 						end
-	
+
 						local model = GUI.Directories.Models.Glow:Clone()
 						model.Parent = workspace
 						local w = Instance.new("WeldConstraint")
@@ -1258,7 +1263,7 @@ local function NQHE_fake_script() -- ScreenGui.Handler
 						w.Parent = model
 						model.CFrame = playa.Character.Head.CFrame * CFrame.new(0.2,0.1,-0.6)
 						w.Part1 = playa.Character.Head
-	
+
 						local model = GUI.Directories.Models.Glow:Clone()
 						model.Parent = workspace
 						local w = Instance.new("WeldConstraint")
@@ -1266,18 +1271,18 @@ local function NQHE_fake_script() -- ScreenGui.Handler
 						w.Parent = model
 						model.CFrame = playa.Character.Head.CFrame * CFrame.new(-0.2,0.1,-0.6)
 						w.Part1 = playa.Character.Head
-	
+
 					end
 				end			
 			end
-	
+
 			if game.Players:FindFirstChild("GetCurb_Stomped") then
 				local playa = game.Players["GetCurb_Stomped"]
 				if playa:FindFirstChild("Ingame") then
 					if not playa.Character:FindFirstChild("Drip") then
 						local Drip = Instance.new("Accessory", playa.Character)
 						Drip.Name = "Drip"
-	
+
 						for i,x in pairs(playa.Character:GetChildren()) do
 							if x:IsA("Shirt") then
 								x.ShirtTemplate = "rbxassetid://5661823678"
@@ -1288,7 +1293,7 @@ local function NQHE_fake_script() -- ScreenGui.Handler
 								x.Color3 = Color3.new(0,0,0)
 							end
 						end
-	
+
 						local model = GUI.Directories.Models.Glow:Clone()
 						model.Parent = workspace
 						local w = Instance.new("WeldConstraint")
@@ -1296,7 +1301,7 @@ local function NQHE_fake_script() -- ScreenGui.Handler
 						w.Parent = model
 						model.CFrame = playa.Character.Head.CFrame * CFrame.new(0.2,0.1,-0.6)
 						w.Part1 = playa.Character.Head
-	
+
 						local model = GUI.Directories.Models.Glow:Clone()
 						model.Parent = workspace
 						local w = Instance.new("WeldConstraint")
@@ -1304,18 +1309,18 @@ local function NQHE_fake_script() -- ScreenGui.Handler
 						w.Parent = model
 						model.CFrame = playa.Character.Head.CFrame * CFrame.new(-0.2,0.1,-0.6)
 						w.Part1 = playa.Character.Head
-	
+
 					end
 				end			
 			end
-	
+
 			if game.Players:FindFirstChild("Sxinisxxter") then
 				local playa = game.Players.Sxinisxxter
 				if playa:FindFirstChild("Ingame") then
 					if not playa.Character:FindFirstChild("Drip") then
 						local Drip = Instance.new("Accessory", playa.Character)
 						Drip.Name = "Drip"
-	
+
 						for i,x in pairs(playa.Character:GetChildren()) do
 							if x:IsA("Shirt") then
 								x.ShirtTemplate = "rbxassetid://5661823678"
@@ -1326,7 +1331,7 @@ local function NQHE_fake_script() -- ScreenGui.Handler
 								x.Color3 = Color3.new(0,0,0)
 							end
 						end
-	
+
 						local model = GUI.Directories.Models.Glow:Clone()
 						model.Parent = workspace
 						local w = Instance.new("WeldConstraint")
@@ -1334,7 +1339,7 @@ local function NQHE_fake_script() -- ScreenGui.Handler
 						w.Parent = model
 						model.CFrame = playa.Character.Head.CFrame * CFrame.new(0.2,0.1,-0.6)
 						w.Part1 = playa.Character.Head
-	
+
 						local model = GUI.Directories.Models.Glow:Clone()
 						model.Parent = workspace
 						local w = Instance.new("WeldConstraint")
@@ -1342,13 +1347,13 @@ local function NQHE_fake_script() -- ScreenGui.Handler
 						w.Parent = model
 						model.CFrame = playa.Character.Head.CFrame * CFrame.new(-0.2,0.1,-0.6)
 						w.Part1 = playa.Character.Head
-	
+
 					end
 				end			
 			end
-	
+
 		end
-	
+
 	end)
 	InvClose.MouseButton1Click:Connect(function()
 		InventoryTopFrame.Visible = false
@@ -1378,17 +1383,17 @@ local function NQHE_fake_script() -- ScreenGui.Handler
 			return end
 	end)
 	ChatlogFrame.Chatlogs.MouseButton1Click:Connect(function()
-		
+
 		if ChatToggle == false then
 			ChatToggle = true
 			Chatlogs.Visible = true
 			return end
-		
+
 		if ChatToggle == true then
 			ChatToggle = false
 			Chatlogs.Visible = false
 			return end
-		
+
 	end)
 	Close.MouseButton1Click:Connect(function()
 		GUI:Destroy()
@@ -1401,18 +1406,18 @@ local function PEAMG_fake_script() -- SpectateTitle.Drag
 
 	local UserInputService = game:GetService("UserInputService")
 	local runService = (game:GetService("RunService"));
-	
+
 	local gui = script.Parent
-	
+
 	local dragging
 	local dragInput
 	local dragStart
 	local startPos
-	
+
 	function Lerp(a, b, m)
 		return a + (b - a) * m
 	end;
-	
+
 	local lastMousePos
 	local lastGoalPos
 	local DRAG_SPEED = (8); -- // The speed of the UI darg.
@@ -1422,21 +1427,21 @@ local function PEAMG_fake_script() -- SpectateTitle.Drag
 			gui.Position = UDim2.new(startPos.X.Scale, Lerp(gui.Position.X.Offset, lastGoalPos.X.Offset, dt * DRAG_SPEED), startPos.Y.Scale, Lerp(gui.Position.Y.Offset, lastGoalPos.Y.Offset, dt * DRAG_SPEED))
 			return 
 		end;
-	
+
 		local delta = (lastMousePos - UserInputService:GetMouseLocation())
 		local xGoal = (startPos.X.Offset - delta.X);
 		local yGoal = (startPos.Y.Offset - delta.Y);
 		lastGoalPos = UDim2.new(startPos.X.Scale, xGoal, startPos.Y.Scale, yGoal)
 		gui.Position = UDim2.new(startPos.X.Scale, Lerp(gui.Position.X.Offset, xGoal, dt * DRAG_SPEED), startPos.Y.Scale, Lerp(gui.Position.Y.Offset, yGoal, dt * DRAG_SPEED))
 	end;
-	
+
 	gui.InputBegan:Connect(function(input)
 		if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
 			dragging = true
 			dragStart = input.Position
 			startPos = gui.Position
 			lastMousePos = UserInputService:GetMouseLocation()
-	
+
 			input.Changed:Connect(function()
 				if input.UserInputState == Enum.UserInputState.End then
 					dragging = false
@@ -1444,13 +1449,13 @@ local function PEAMG_fake_script() -- SpectateTitle.Drag
 			end)
 		end
 	end)
-	
+
 	gui.InputChanged:Connect(function(input)
 		if input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch then
 			dragInput = input
 		end
 	end)
-	
+
 	runService.Heartbeat:Connect(Update)
 end
 coroutine.wrap(PEAMG_fake_script)()
@@ -1481,214 +1486,214 @@ local function OINIU_fake_script() -- ScreenGui.Fly
 	local Animation = Instance.new("Animation")
 	Animation.AnimationId = "rbxassetid://12649981545"
 	local Idle = game.Players.LocalPlayer.Character.Humanoid:LoadAnimation(Animation)
-	
+
 	FramesFrame.Player.Fly.MouseButton1Click:Connect(function()
-		
-	Idle:Play()	
-		
-	local User = game:GetService("UserInputService")
-	local player = game:GetService("Players").LocalPlayer
-	local GuiService = game:GetService("StarterGui")
-	local mouse = game.Players.LocalPlayer:GetMouse()
-	
-	local holdingWKey = false
-	local holdingSKey = false
-	local holdingAKey = false
-	local holdingDKey = false
-	local holdingSpaceKey = false
-	local holdingControlKey = false
-	
-	Speed_1 = -1
-	
-	mouse.KeyDown:connect(function(key)
-		if key == "-" then
-			Speed_1 = Speed_1 + 0.2
-			GuiService:SetCore("SendNotification", {Title = "Speed", Text = "Speed has gone down";})
-		end
-	end)
-	
-	mouse.KeyDown:connect(function(key)
-		if key == "=" then
-			Speed_1 = Speed_1 - 0.2
-			GuiService:SetCore("SendNotification", {Title = "Speed", Text = "Speed has gone up";})
-		end
-	end)
-	
-	mouse.KeyDown:connect(function(key)
-		if key == "m" then
+
+		Idle:Play()	
+
+		local User = game:GetService("UserInputService")
+		local player = game:GetService("Players").LocalPlayer
+		local GuiService = game:GetService("StarterGui")
+		local mouse = game.Players.LocalPlayer:GetMouse()
+
+		local holdingWKey = false
+		local holdingSKey = false
+		local holdingAKey = false
+		local holdingDKey = false
+		local holdingSpaceKey = false
+		local holdingControlKey = false
+
+		Speed_1 = -1
+
+		mouse.KeyDown:connect(function(key)
+			if key == "-" then
+				Speed_1 = Speed_1 + 0.2
+				GuiService:SetCore("SendNotification", {Title = "Speed", Text = "Speed has gone down";})
+			end
+		end)
+
+		mouse.KeyDown:connect(function(key)
+			if key == "=" then
+				Speed_1 = Speed_1 - 0.2
+				GuiService:SetCore("SendNotification", {Title = "Speed", Text = "Speed has gone up";})
+			end
+		end)
+
+		mouse.KeyDown:connect(function(key)
+			if key == "m" then
 				if startup  == true then
 					Idle:Stop()
 					NormalFly:Stop()
-				startup = false
-				GuiService:SetCore("SendNotification", {Title = "Speed", Text = "Speed is now disabled";})
+					startup = false
+					GuiService:SetCore("SendNotification", {Title = "Speed", Text = "Speed is now disabled";})
 				else
 					Idle:Play()
-				startup = true
-				GuiService:SetCore("SendNotification", {Title = "Speed", Text = "Speed is now enabled";})
-	
-				local brick = Instance.new("Part", workspace)
-				brick.Size = Vector3.new(3, 2, 3)
-				brick.CFrame = player.Character.HumanoidRootPart.CFrame + Vector3.new(0, -4, 0)
-				brick.Transparency = 1
-				brick.Anchored = true
-				brick.Name = "Brick"
-				mouse.KeyDown:connect(function(key)
-					if key == "m" then
+					startup = true
+					GuiService:SetCore("SendNotification", {Title = "Speed", Text = "Speed is now enabled";})
+
+					local brick = Instance.new("Part", workspace)
+					brick.Size = Vector3.new(3, 2, 3)
+					brick.CFrame = player.Character.HumanoidRootPart.CFrame + Vector3.new(0, -4, 0)
+					brick.Transparency = 1
+					brick.Anchored = true
+					brick.Name = "Brick"
+					mouse.KeyDown:connect(function(key)
+						if key == "m" then
 							brick:remove()
 							Idle:Stop()
 							NormalFly:Stop()
+						end
+					end)
+					for i = 1, math.huge do
+						brick.CFrame = player.Character.HumanoidRootPart.CFrame + Vector3.new(0, -4, 0)
+						wait(0)
 					end
-				end)
-				for i = 1, math.huge do
-					brick.CFrame = player.Character.HumanoidRootPart.CFrame + Vector3.new(0, -4, 0)
-					wait(0)
 				end
 			end
-		end
-	end)
-	
-	game:GetService('RunService').Stepped:connect(function()
-		if startup then
+		end)
+
+		game:GetService('RunService').Stepped:connect(function()
+			if startup then
 				if WHeld == true then
-				
-				player.Character.HumanoidRootPart.CFrame = player.Character.HumanoidRootPart.CFrame * CFrame.new(0,0,Speed_1)
-	
+
+					player.Character.HumanoidRootPart.CFrame = player.Character.HumanoidRootPart.CFrame * CFrame.new(0,0,Speed_1)
+
+				end
 			end
-		end
-	end)
-	
-	game:GetService('RunService').Stepped:connect(function()
-		if startup then
+		end)
+
+		game:GetService('RunService').Stepped:connect(function()
+			if startup then
 				if SHeld == true then
-					
-				player.Character.HumanoidRootPart.CFrame = player.Character.HumanoidRootPart.CFrame * CFrame.new(0,0,-Speed_1)
+
+					player.Character.HumanoidRootPart.CFrame = player.Character.HumanoidRootPart.CFrame * CFrame.new(0,0,-Speed_1)
+				end
 			end
-		end
-	end)
-	
-	game:GetService('RunService').Stepped:connect(function()
-		if startup then
+		end)
+
+		game:GetService('RunService').Stepped:connect(function()
+			if startup then
 				if AHeld == true then
-					
-				player.Character.HumanoidRootPart.CFrame = player.Character.HumanoidRootPart.CFrame * CFrame.new(Speed_1,0,0)
+
+					player.Character.HumanoidRootPart.CFrame = player.Character.HumanoidRootPart.CFrame * CFrame.new(Speed_1,0,0)
+				end
 			end
-		end
-	end)
-	
-	
-	game:GetService('RunService').Stepped:connect(function()
-		if startup then
+		end)
+
+
+		game:GetService('RunService').Stepped:connect(function()
+			if startup then
 				if DHeld == true then
-			
-				player.Character.HumanoidRootPart.CFrame = player.Character.HumanoidRootPart.CFrame * CFrame.new(-Speed_1,0,0)
+
+					player.Character.HumanoidRootPart.CFrame = player.Character.HumanoidRootPart.CFrame * CFrame.new(-Speed_1,0,0)
+				end
 			end
-		end
-	end)
-	
-	
-	game:GetService('RunService').Stepped:connect(function()
-		if startup then
+		end)
+
+
+		game:GetService('RunService').Stepped:connect(function()
+			if startup then
 				if SpaceHeld == true then
-					
-				player.Character.HumanoidRootPart.CFrame = player.Character.HumanoidRootPart.CFrame * CFrame.new(0,-Speed_1,0)
+
+					player.Character.HumanoidRootPart.CFrame = player.Character.HumanoidRootPart.CFrame * CFrame.new(0,-Speed_1,0)
+				end
 			end
-		end
-	end)
-	
-	game:GetService('RunService').Stepped:connect(function()
-		if startup then
+		end)
+
+		game:GetService('RunService').Stepped:connect(function()
+			if startup then
 				if ControlHeld == true then
-					
-				player.Character.HumanoidRootPart.CFrame = player.Character.HumanoidRootPart.CFrame * CFrame.new(0,Speed_1,0)
+
+					player.Character.HumanoidRootPart.CFrame = player.Character.HumanoidRootPart.CFrame * CFrame.new(0,Speed_1,0)
+				end
 			end
-		end
-	
-	end)
-	
-	User.InputBegan:Connect(function(inputObject)
-		if(inputObject.KeyCode==Enum.KeyCode.W) then
+
+		end)
+
+		User.InputBegan:Connect(function(inputObject)
+			if(inputObject.KeyCode==Enum.KeyCode.W) then
 				holdingWKey = true WHeld = true
 				if startup == true then
 					NormalFly:Play()
-					end
-		end
-	
-		if(inputObject.KeyCode==Enum.KeyCode.S) then
+				end
+			end
+
+			if(inputObject.KeyCode==Enum.KeyCode.S) then
 				holdingSKey = true SHeld = true
 				if startup == true then
 					NormalFly:Play()
 				end
-		end
-	
-		if(inputObject.KeyCode==Enum.KeyCode.A) then
+			end
+
+			if(inputObject.KeyCode==Enum.KeyCode.A) then
 				holdingAKey = true AHeld = true
 				if startup == true then
 					NormalFly:Play()
 				end
-		end
-	
-		if(inputObject.KeyCode==Enum.KeyCode.D) then
+			end
+
+			if(inputObject.KeyCode==Enum.KeyCode.D) then
 				holdingDKey = true DHeld = true
 				if startup == true then
 					NormalFly:Play()
 				end
-		end
-		if(inputObject.KeyCode==Enum.KeyCode.LeftControl) then
+			end
+			if(inputObject.KeyCode==Enum.KeyCode.LeftControl) then
 				holdingControlKey = true ControlHeld = true
 				if startup == true then
 					NormalFly:Play()
 				end
-		end
-	
-		if(inputObject.KeyCode==Enum.KeyCode.Space) then
+			end
+
+			if(inputObject.KeyCode==Enum.KeyCode.Space) then
 				holdingSpaceKey = true SpaceHeld= true
 				if startup == true then
 					NormalFly:Play()
 				end
-		end
-	
-		if(inputObject.KeyCode==Enum.KeyCode.W) then
+			end
+
+			if(inputObject.KeyCode==Enum.KeyCode.W) then
 				holdingUKey = true WHeld = true
 				if startup == true then
 					NormalFly:Play()
 				end
-		end
-	end)
-	
-	User.InputEnded:Connect(function(inputObject)
-		if(inputObject.KeyCode==Enum.KeyCode.W) then
+			end
+		end)
+
+		User.InputEnded:Connect(function(inputObject)
+			if(inputObject.KeyCode==Enum.KeyCode.W) then
 				holdingWKey = false WHeld = false
 				NormalFly:Stop()
-		end
-	
-		if(inputObject.KeyCode==Enum.KeyCode.S) then
+			end
+
+			if(inputObject.KeyCode==Enum.KeyCode.S) then
 				holdingSKey = false SHeld = false    
 				NormalFly:Stop()
-		end
-	
-		if(inputObject.KeyCode==Enum.KeyCode.A) then
+			end
+
+			if(inputObject.KeyCode==Enum.KeyCode.A) then
 				holdingAKey = false AHeld = false   
 				NormalFly:Stop()
-		end
-	
-		if(inputObject.KeyCode==Enum.KeyCode.D) then
+			end
+
+			if(inputObject.KeyCode==Enum.KeyCode.D) then
 				holdingDKey = false DHeld = false    
 				NormalFly:Stop()
-		end
-	
-		if(inputObject.KeyCode==Enum.KeyCode.LeftControl) then
+			end
+
+			if(inputObject.KeyCode==Enum.KeyCode.LeftControl) then
 				holdingShiftKey = false ControlHeld = false 
 				NormalFly:Stop()
-		end
-	
-		if(inputObject.KeyCode==Enum.KeyCode.Space) then
+			end
+
+			if(inputObject.KeyCode==Enum.KeyCode.Space) then
 				holdingSpaceKey = false SpaceHeld = false
 				NormalFly:Stop()
-		end
+			end
 		end)
-		
-		
-		end)
+
+
+	end)
 end
 coroutine.wrap(OINIU_fake_script)()
 local function NMJRDM_fake_script() -- Chatlogs_2.Drag 
@@ -1696,18 +1701,18 @@ local function NMJRDM_fake_script() -- Chatlogs_2.Drag
 
 	local UserInputService = game:GetService("UserInputService")
 	local runService = (game:GetService("RunService"));
-	
+
 	local gui = script.Parent
-	
+
 	local dragging
 	local dragInput
 	local dragStart
 	local startPos
-	
+
 	function Lerp(a, b, m)
 		return a + (b - a) * m
 	end;
-	
+
 	local lastMousePos
 	local lastGoalPos
 	local DRAG_SPEED = (8); -- // The speed of the UI darg.
@@ -1717,21 +1722,21 @@ local function NMJRDM_fake_script() -- Chatlogs_2.Drag
 			gui.Position = UDim2.new(startPos.X.Scale, Lerp(gui.Position.X.Offset, lastGoalPos.X.Offset, dt * DRAG_SPEED), startPos.Y.Scale, Lerp(gui.Position.Y.Offset, lastGoalPos.Y.Offset, dt * DRAG_SPEED))
 			return 
 		end;
-	
+
 		local delta = (lastMousePos - UserInputService:GetMouseLocation())
 		local xGoal = (startPos.X.Offset - delta.X);
 		local yGoal = (startPos.Y.Offset - delta.Y);
 		lastGoalPos = UDim2.new(startPos.X.Scale, xGoal, startPos.Y.Scale, yGoal)
 		gui.Position = UDim2.new(startPos.X.Scale, Lerp(gui.Position.X.Offset, xGoal, dt * DRAG_SPEED), startPos.Y.Scale, Lerp(gui.Position.Y.Offset, yGoal, dt * DRAG_SPEED))
 	end;
-	
+
 	gui.InputBegan:Connect(function(input)
 		if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
 			dragging = true
 			dragStart = input.Position
 			startPos = gui.Position
 			lastMousePos = UserInputService:GetMouseLocation()
-	
+
 			input.Changed:Connect(function()
 				if input.UserInputState == Enum.UserInputState.End then
 					dragging = false
@@ -1739,13 +1744,13 @@ local function NMJRDM_fake_script() -- Chatlogs_2.Drag
 			end)
 		end
 	end)
-	
+
 	gui.InputChanged:Connect(function(input)
 		if input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch then
 			dragInput = input
 		end
 	end)
-	
+
 	runService.Heartbeat:Connect(Update)
 end
 coroutine.wrap(NMJRDM_fake_script)()
@@ -1754,18 +1759,18 @@ local function FGZR_fake_script() -- InventoryTopFrame.Drag
 
 	local UserInputService = game:GetService("UserInputService")
 	local runService = (game:GetService("RunService"));
-	
+
 	local gui = script.Parent
-	
+
 	local dragging
 	local dragInput
 	local dragStart
 	local startPos
-	
+
 	function Lerp(a, b, m)
 		return a + (b - a) * m
 	end;
-	
+
 	local lastMousePos
 	local lastGoalPos
 	local DRAG_SPEED = (8); -- // The speed of the UI darg.
@@ -1775,21 +1780,21 @@ local function FGZR_fake_script() -- InventoryTopFrame.Drag
 			gui.Position = UDim2.new(startPos.X.Scale, Lerp(gui.Position.X.Offset, lastGoalPos.X.Offset, dt * DRAG_SPEED), startPos.Y.Scale, Lerp(gui.Position.Y.Offset, lastGoalPos.Y.Offset, dt * DRAG_SPEED))
 			return 
 		end;
-	
+
 		local delta = (lastMousePos - UserInputService:GetMouseLocation())
 		local xGoal = (startPos.X.Offset - delta.X);
 		local yGoal = (startPos.Y.Offset - delta.Y);
 		lastGoalPos = UDim2.new(startPos.X.Scale, xGoal, startPos.Y.Scale, yGoal)
 		gui.Position = UDim2.new(startPos.X.Scale, Lerp(gui.Position.X.Offset, xGoal, dt * DRAG_SPEED), startPos.Y.Scale, Lerp(gui.Position.Y.Offset, yGoal, dt * DRAG_SPEED))
 	end;
-	
+
 	gui.InputBegan:Connect(function(input)
 		if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
 			dragging = true
 			dragStart = input.Position
 			startPos = gui.Position
 			lastMousePos = UserInputService:GetMouseLocation()
-	
+
 			input.Changed:Connect(function()
 				if input.UserInputState == Enum.UserInputState.End then
 					dragging = false
@@ -1797,13 +1802,13 @@ local function FGZR_fake_script() -- InventoryTopFrame.Drag
 			end)
 		end
 	end)
-	
+
 	gui.InputChanged:Connect(function(input)
 		if input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch then
 			dragInput = input
 		end
 	end)
-	
+
 	runService.Heartbeat:Connect(Update)
 end
 coroutine.wrap(FGZR_fake_script)()
