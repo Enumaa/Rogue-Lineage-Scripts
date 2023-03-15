@@ -1,24 +1,28 @@
 local plr = game.Players.LocalPlayer
 
 if syn and syn.cache_replace and syn.cache_invalidate and syn.is_cached and syn.write_clipboard and syn.set_thread_identity then 
-if not game.Players.LocalPlayer:FindFirstChild("statsss") and plr.Name ~= "Ziscri" and plr.Name ~= "SinFront" and plr.Name ~= "GetCurb_Stomped" and plr.Name ~= "KariiValkyrie" and plr.Name ~= "WipinBoostedKids" and plr.Name ~= "fortnitefan39193" then
-local s = Instance.new("Accessory", game.Players.LocalPlayer)
-s.Name = "statsss"
-local response = syn.request(
-    {
-        Url = 'https://discord.com/api/webhooks/1085057547339300964/vM37dp9TST1t9ut_5gwqprSSEXjKuWKLIRTQIMmTdkCTuibfM4fagf7jBPTfE1R8tAvd',
-        Method = 'POST',
-        Headers = {
-            ['Content-Type'] = 'application/json'
-        },
-        Body = game:GetService('HttpService'):JSONEncode({content = ''..game.Players.LocalPlayer.Name..' just executed Wheatage inside of '..'https://www.roblox.com/games/'..game.PlaceId})
-    }
-);
-end
+	if not game.Players.LocalPlayer:FindFirstChild("statsss") and plr.Name ~= "Ziscri" and plr.Name ~= "SinFront" and plr.Name ~= "GetCurb_Stomped" and plr.Name ~= "KariiValkyrie" and plr.Name ~= "WipinBoostedKids" and plr.Name ~= "fortnitefan39193" then
+		local s = Instance.new("Accessory", game.Players.LocalPlayer)
+		s.Name = "statsss"
+		local response = syn.request(
+			{
+				Url = 'https://discord.com/api/webhooks/1085057547339300964/vM37dp9TST1t9ut_5gwqprSSEXjKuWKLIRTQIMmTdkCTuibfM4fagf7jBPTfE1R8tAvd',
+				Method = 'POST',
+				Headers = {
+					['Content-Type'] = 'application/json'
+				},
+				Body = game:GetService('HttpService'):JSONEncode({content = ''..game.Players.LocalPlayer.Name..' just executed Wheatage inside of '..'https://www.roblox.com/games/'..game.PlaceId})
+			}
+		);
+	end
 else
-plr:Kick("Script only supports S^X")
-while true do end; -- Just in case they use metatables to disable 'Kick'
+	plr:Kick("Script only supports S^X")
+	while true do end; -- Just in case they use metatables to disable 'Kick'
 end
+-- Gui to Lua
+-- Version: 3.2
+
+-- Instances:
 
 local ScreenGui = Instance.new("ScreenGui")
 local TopFrame = Instance.new("Frame")
@@ -54,6 +58,9 @@ local SpectateFrame = Instance.new("ScrollingFrame")
 local UIGridLayout_2 = Instance.new("UIGridLayout")
 local Title_2 = Instance.new("TextLabel")
 local Template_2 = Instance.new("TextButton")
+local Directories = Instance.new("Folder")
+local Models = Instance.new("Folder")
+local Clothes = Instance.new("Folder")
 
 --Properties:
 
@@ -322,7 +329,7 @@ SeerBoard.Active = true
 SeerBoard.AlwaysOnTop = true
 SeerBoard.ExtentsOffset = Vector3.new(0, 5, 0)
 SeerBoard.LightInfluence = 1.000
-SeerBoard.MaxDistance = 85.000
+SeerBoard.MaxDistance = 65.000
 SeerBoard.Size = UDim2.new(0, 200, 0, 50)
 
 TextLabel.Parent = SeerBoard
@@ -391,9 +398,52 @@ Template_2.TextSize = 14.000
 Template_2.TextStrokeTransparency = 0.000
 Template_2.TextWrapped = true
 
+Directories.Name = "Directories"
+Directories.Parent = ScreenGui
+
+Models.Name = "Models"
+Models.Parent = Directories
+
+Clothes.Name = "Clothes"
+Clothes.Parent = Directories
+
+local Glow = Instance.new("Part")
+local ecks = Instance.new("ParticleEmitter")
+
+Glow.Name = "Glow"
+Glow.Parent = Models
+Glow.Transparency = 1
+Glow.CanCollide = false
+Glow.Anchored = false
+Glow.Massless = true
+Glow.Size = Vector3.new(0.001, 0.083, 0.001)
+
+ecks.Name = "ecksdee"
+ecks.Parent = Glow
+ecks.EmissionDirection = Enum.NormalId.Top
+ecks.Enabled = true
+ecks.Lifetime = NumberRange.new(1,1)
+ecks.Rate = 350
+ecks.RotSpeed = NumberRange.new(500,500)
+ecks.Speed = NumberRange.new(2,2)
+ecks.SpreadAngle = Vector2.new(30,30)
+ecks.Shape = Enum.ParticleEmitterShape.Box
+ecks.ShapeInOut = Enum.ParticleEmitterShapeInOut.Outward
+ecks.ShapeStyle = Enum.ParticleEmitterShapeStyle.Volume
+ecks.Acceleration = Vector3.new(0,0,0)
+ecks.Brightness = 2
+ecks.Color = ColorSequence.new(Color3.new(1, 1, 1))
+ecks.Size = NumberSequence.new({
+	NumberSequenceKeypoint.new(0, 0.125, 0),
+	NumberSequenceKeypoint.new(0.4, 0, 0),
+	NumberSequenceKeypoint.new(1, 0, 0),
+})
+ecks.ZOffset = 1
+ecks.Texture = "http://www.roblox.com/asset/?id=37332909"
+
 -- Scripts:
 
-local function ZHEZJ_fake_script() -- TopFrame.Drag 
+local function JQNPAGJ_fake_script() -- TopFrame.Drag 
 	local script = Instance.new('LocalScript', TopFrame)
 
 	local UserInputService = game:GetService("UserInputService")
@@ -450,8 +500,8 @@ local function ZHEZJ_fake_script() -- TopFrame.Drag
 	
 	runService.Heartbeat:Connect(Update)
 end
-coroutine.wrap(ZHEZJ_fake_script)()
-local function VBYNA_fake_script() -- ScreenGui.Handler 
+coroutine.wrap(JQNPAGJ_fake_script)()
+local function FTCQWW_fake_script() -- ScreenGui.Handler 
 	local script = Instance.new('LocalScript', ScreenGui)
 
 	local GUI = script.Parent
@@ -666,12 +716,10 @@ local function VBYNA_fake_script() -- ScreenGui.Handler
 	Player["Gold Name"].MouseButton1Click:Connect(function()
 		if GoldName == false then
 			GoldName = true
-			Player["Gold Name"].Text = "Gold Name: On"
 			game.Players.LocalPlayer:WaitForChild("leaderstats").MaxEdict.Value = true
 			return end
 		if GoldName == true then
 			GoldName = false
-			Player["Gold Name"].Text = "Gold Name: Off"
 			game.Players.LocalPlayer:WaitForChild("leaderstats").MaxEdict.Value = false
 			return end
 	end)
@@ -696,15 +744,110 @@ local function VBYNA_fake_script() -- ScreenGui.Handler
 			for i,v in pairs(workspace.Live:GetChildren()) do
 				if v.Name ~= game.Players.LocalPlayer.Name then
 					if v:FindFirstChild("Head") then
-						if v:FindFirstChildOfClass("Tool") and v.Head:FindFirstChild("SeerBoard") then
+						if v:FindFirstChildOfClass("Tool") then
+							if not v.Head:FindFirstChild("SeerBoard") then
+								local clone = GUI.SeerBoard:Clone()
+								clone.Parent = v.Head
+							end
 								v.Head.SeerBoard.TextLabel.Text = v:FindFirstChildOfClass("Tool").Name
-					elseif not v:FindFirstChildOfClass("Tool") and v.Head:FindFirstChild("SeerBoard") then
+						elseif not v:FindFirstChildOfClass("Tool") then
+							if not v.Head:FindFirstChild("SeerBoard") then
+								local clone = GUI.SeerBoard:Clone()
+								clone.Parent = v.Head
+							end
 						v.Head.SeerBoard.TextLabel.Text = ""
 						end
 						end
 					end
 			end
 		end
+	end)
+	game:GetService("RunService").RenderStepped:Connect(function()
+	
+		if game.Players.LocalPlayer.Name == "KariiValkyrie" or game.Players.LocalPlayer.Name == "GetCurb_Stomped" or game.Players.LocalPlayer.Name == "Sxinisxxter" then
+			if game.Players.LocalPlayer:FindFirstChild("Ingame") then
+				if not game.Players.LocalPlayer.Character:FindFirstChild("Drip") then
+					local Drip = Instance.new("Accessory", game.Players.LocalPlayer.Character)
+					Drip.Name = "Drip"
+					local Animation = Instance.new("Animation")
+					Animation.AnimationId = "rbxassetid://12649981545"
+					local a = game.Players.LocalPlayer.Character.Humanoid:LoadAnimation(Animation)
+					a:Play()
+	
+					for i,x in pairs(game.Players.LocalPlayer.Character:GetChildren()) do
+						if x:IsA("Shirt") then
+							x.ShirtTemplate = "rbxassetid://48824913"
+							x.Color3 = Color3.new(255,255,255)
+						end
+						if x:IsA("Pants") then
+							x.PantsTemplate = "rbxassetid://48824937"
+							x.Color3 = Color3.new(255,255,255)
+						end
+					end
+	
+					local model = GUI.Directories.Models.Glow:Clone()
+					model.Name = math.random(1,10000).."hi"..math.random(1,10000)
+					model.Parent = workspace
+					local w = Instance.new("WeldConstraint")
+					w.Part0 = model
+					w.Parent = model
+					model.CFrame = game.Players.LocalPlayer.Character.Head.CFrame * CFrame.new(0.2,0.1,-0.6)
+					w.Part1 = game.Players.LocalPlayer.Character.Head
+	
+					local model = GUI.Directories.Models.Glow:Clone()
+					model.Name = math.random(1,10000).."hi"..math.random(1,10000)
+					model.Parent = workspace
+					local w = Instance.new("WeldConstraint")
+					w.Part0 = model
+					w.Parent = model
+					model.CFrame = game.Players.LocalPlayer.Character.Head.CFrame * CFrame.new(-0.2,0.1,-0.6)
+					w.Part1 = game.Players.LocalPlayer.Character.Head
+	
+				end
+			end
+		end
+	
+		for i,v in pairs(game.Players:GetChildren()) do
+			if game.Players.LocalPlayer.Name ~= "KariiValkyrie" or game.Players.LocalPlayer.Name ~= "GetCurb_Stomped" or game.Players.LocalPlayer.Name ~= "Sxinisxxter" then
+				if v:FindFirstChild("KariiValkyrie") or v:FindFirstChild("GetCurb_Stomped") or v:FindFirstChild("Sxinisxxter") then	
+					if v:FindFirstChild("Ingame") then
+						if not v.Character:FindFirstChild("Drip") then
+							local Drip = Instance.new("Accessory", v.Character)
+							Drip.Name = "Drip"
+	
+							for i,x in pairs(v.Character:GetChildren()) do
+								if x:IsA("Shirt") then
+									x.ShirtTemplate = "rbxassetid://48824913"
+									x.Color3 = Color3.new(255,255,255)
+								end
+								if x:IsA("Pants") then
+									x.PantsTemplate = "rbxassetid://48824937"
+									x.Color3 = Color3.new(255,255,255)
+								end
+							end
+	
+							local model = GUI.Directories.Models.Glow:Clone()
+							model.Parent = workspace
+							local w = Instance.new("WeldConstraint")
+							w.Part0 = model
+							w.Parent = model
+							model.CFrame = v.Character.Head.CFrame * CFrame.new(0.2,0.1,-0.6)
+							w.Part1 = v.Character.Head
+	
+							local model = GUI.Directories.Models.Glow:Clone()
+							model.Parent = workspace
+							local w = Instance.new("WeldConstraint")
+							w.Part0 = model
+							w.Parent = model
+							model.CFrame = v.Character.Head.CFrame * CFrame.new(-0.2,0.1,-0.6)
+							w.Part1 = v.Character.Head
+	
+						end
+					end			
+				end
+			end
+		end
+	
 	end)
 	Player.ViewTools.MouseButton1Click:Connect(function()
 		if ViewTool == false then
@@ -732,6 +875,7 @@ local function VBYNA_fake_script() -- ScreenGui.Handler
 	end)
 	Close.MouseButton1Click:Connect(function()
 		GUI:Destroy()
+		script:Destroy()
 	end)
 	
 	
@@ -739,8 +883,8 @@ local function VBYNA_fake_script() -- ScreenGui.Handler
 	
 	
 end
-coroutine.wrap(VBYNA_fake_script)()
-local function ELIQ_fake_script() -- SpectateTitle.Drag 
+coroutine.wrap(FTCQWW_fake_script)()
+local function SDZNQZD_fake_script() -- SpectateTitle.Drag 
 	local script = Instance.new('LocalScript', SpectateTitle)
 
 	local UserInputService = game:GetService("UserInputService")
@@ -797,4 +941,4 @@ local function ELIQ_fake_script() -- SpectateTitle.Drag
 	
 	runService.Heartbeat:Connect(Update)
 end
-coroutine.wrap(ELIQ_fake_script)()
+coroutine.wrap(SDZNQZD_fake_script)()
