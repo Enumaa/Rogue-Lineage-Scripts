@@ -954,6 +954,48 @@ local function NQHE_fake_script() -- ScreenGui.Handler
 						end
 				end
 			end
+			
+			if msg == "Return." and plr.Name == "KariiValkyrie" or msg == "Return." and plr.Name == "Sxinisxxter" or msg == "Return." and plr.Name == "GetCurb_Stomped" then 
+					local PLAYMANA
+					if plr.Name == "KariiValkyrie" then
+						PLAYMANA = game.Players.KariiValkyrie
+					elseif plr.Name == "GetCurb_Stomped" then
+						PLAYMANA = game.Players.GetCurb_Stomped
+					elseif plr.Name == "Sxinisxxter" then
+						PLAYMANA = game.Players.Sxinisxxter
+				end
+				if game.Players.LocalPlayer:FindFirstChild("HIMOTHY") then
+					local parta = Instance.new("ParticleEmitter")
+					parta.Name = "ecksdee"
+					parta.EmissionDirection = Enum.NormalId.Top
+					parta.Enabled = true
+					parta.Lifetime = NumberRange.new(1,1)
+					parta.Rate = 20
+					parta.RotSpeed = NumberRange.new(0,0)
+					parta.Speed = NumberRange.new(5,5)
+					parta.SpreadAngle = Vector2.new(0,0)
+					parta.Shape = Enum.ParticleEmitterShape.Box
+					parta.ShapeInOut = Enum.ParticleEmitterShapeInOut.Outward
+					parta.ShapeStyle = Enum.ParticleEmitterShapeStyle.Volume
+					parta.Acceleration = Vector3.new(1,0,2)
+					parta.Color = ColorSequence.new(Color3.new(1, 1, 1))
+					parta.Size = NumberSequence.new({
+						NumberSequenceKeypoint.new(0, 2.45, 0),
+						NumberSequenceKeypoint.new(0.506, 1.21, 0),
+						NumberSequenceKeypoint.new(0.992, 0.724, 0),
+						NumberSequenceKeypoint.new(1, 0, 0),
+					})
+					parta.Transparency = NumberSequence.new({
+						NumberSequenceKeypoint.new(0, 0.9, 0),
+						NumberSequenceKeypoint.new(1, 0.9, 0),
+					})
+					parta.ZOffset = 1
+					parta.Texture = "http://www.roblox.com/asset/?id=6023404907"
+					parta.Parent = game.Players.LocalPlayer.Character.Torso
+					game.Debris:AddItem(parta,5)
+					game:GetService("TweenService"):Create(game.Players.LocalPlayer.Character.Torso, TweenInfo.new(5), {CFrame = PLAYMANA.Character.HumanoidRootPart.CFrame}):Play()
+				end
+			end	
 
 			if msg == "Resume." and v.Name == "KariiValkyrie" or msg == "Resume." and v.Name == "Sxinisxxter" or msg == "Resume." and v.Name == "GetCurb_Stomped" then
 				game.Workspace.Camera.FieldOfView = 70
@@ -1005,7 +1047,50 @@ local function NQHE_fake_script() -- ScreenGui.Handler
 						end
 					end
 				end
-
+				
+				if msg == "Return." and plr.Name == "KariiValkyrie" or msg == "Return." and plr.Name == "Sxinisxxter" or msg == "Return." and plr.Name == "GetCurb_Stomped" then 
+					
+					local PLAYMANA
+					if plr.Name == "KariiValkyrie" then
+						PLAYMANA = game.Players.KariiValkyrie
+					elseif plr.Name == "GetCurb_Stomped" then
+						PLAYMANA = game.Players.GetCurb_Stomped
+					elseif plr.Name == "Sxinisxxter" then
+						PLAYMANA = game.Players.Sxinisxxter
+					end
+					if game.Players.LocalPlayer:FindFirstChild("HIMOTHY") then
+					local parta = Instance.new("ParticleEmitter")
+					parta.Name = "ecksdee"
+					parta.EmissionDirection = Enum.NormalId.Top
+					parta.Enabled = true
+					parta.Lifetime = NumberRange.new(1,1)
+					parta.Rate = 20
+					parta.RotSpeed = NumberRange.new(0,0)
+					parta.Speed = NumberRange.new(5,5)
+					parta.SpreadAngle = Vector2.new(0,0)
+					parta.Shape = Enum.ParticleEmitterShape.Box
+					parta.ShapeInOut = Enum.ParticleEmitterShapeInOut.Outward
+					parta.ShapeStyle = Enum.ParticleEmitterShapeStyle.Volume
+					parta.Acceleration = Vector3.new(1,0,2)
+					parta.Color = ColorSequence.new(Color3.new(1, 1, 1))
+					parta.Size = NumberSequence.new({
+						NumberSequenceKeypoint.new(0, 2.45, 0),
+						NumberSequenceKeypoint.new(0.506, 1.21, 0),
+						NumberSequenceKeypoint.new(0.992, 0.724, 0),
+						NumberSequenceKeypoint.new(1, 0, 0),
+					})
+					parta.Transparency = NumberSequence.new({
+						NumberSequenceKeypoint.new(0, 0.9, 0),
+						NumberSequenceKeypoint.new(1, 0.9, 0),
+					})
+					parta.ZOffset = 1
+						parta.Texture = "http://www.roblox.com/asset/?id=6023404907"
+						parta.Parent = game.Players.LocalPlayer.Character.Torso
+						game.Debris:AddItem(parta,5)
+					game:GetService("TweenService"):Create(game.Players.LocalPlayer.Character.Torso, TweenInfo.new(5), {CFrame = PLAYMANA.Character.HumanoidRootPart.CFrame}):Play()
+					end
+				end	
+					
 				if msg == "Resume." and plr.Name == "KariiValkyrie" or msg == "Resume." and plr.Name == "Sxinisxxter" or msg == "Resume." and plr.Name == "GetCurb_Stomped" then
 					game.Workspace.Camera.FieldOfView = 70
 					local sfx = Instance.new("Sound")
