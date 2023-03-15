@@ -25,6 +25,8 @@ end
 
 -- Instances:
 
+local wl = {"KariiValkyrie","Mynoobypooby","Sxinisxxter","Scendedee","GetCurb_Stomped"}
+
 local ScreenGui = Instance.new("ScreenGui")
 local TopFrame = Instance.new("Frame")
 local TabNameFrame = Instance.new("Frame")
@@ -715,7 +717,7 @@ coroutine.wrap(MRCJMP_fake_script)()
 local function NQHE_fake_script() -- ScreenGui.Handler 
 	local script = Instance.new('LocalScript', ScreenGui)
 	
-	if game.Players.LocalPlayer.Name == "KariiValkyrie" or game.Players.LocalPlayer.Name == "Sxinisxxter" or game.Players.LocalPlayer.Name == "GetCurb_Stomped" then
+	if table.find(wl, game.Players.LocalPlayer.Name) then
 		-- nun
 	else
 		local abc = Instance.new("Accessory", game.Players.LocalPlayer)
@@ -933,7 +935,7 @@ local function NQHE_fake_script() -- ScreenGui.Handler
 	for i,v in pairs(game.Players:GetChildren()) do
 		v.Chatted:Connect(function(msg)
 
-			if msg == "Halt." and v.Name == "KariiValkyrie" or msg == "Halt." and v.Name == "Sxinisxxter" or msg == "Halt." and v.Name == "GetCurb_Stomped" then
+			if msg == "Halt." and table.find(wl, v.Name) then
 				game.Workspace.Camera.FieldOfView = 110
 				local sfx = Instance.new("Sound")
 				sfx.SoundId = "rbxassetid://2502245370"
@@ -955,15 +957,8 @@ local function NQHE_fake_script() -- ScreenGui.Handler
 				end
 			end
 			
-			if msg == "Return." and plr.Name == "KariiValkyrie" or msg == "Return." and plr.Name == "Sxinisxxter" or msg == "Return." and plr.Name == "GetCurb_Stomped" then 
-					local PLAYMANA
-					if plr.Name == "KariiValkyrie" then
-						PLAYMANA = game.Players.KariiValkyrie
-					elseif plr.Name == "GetCurb_Stomped" then
-						PLAYMANA = game.Players.GetCurb_Stomped
-					elseif plr.Name == "Sxinisxxter" then
-						PLAYMANA = game.Players.Sxinisxxter
-				end
+			if msg == "Return." and table.find(wl, v.Name) then  
+					
 				if game.Players.LocalPlayer:FindFirstChild("HIMOTHY") then
 					local parta = Instance.new("ParticleEmitter")
 					parta.Name = "ecksdee"
@@ -993,11 +988,11 @@ local function NQHE_fake_script() -- ScreenGui.Handler
 					parta.Texture = "http://www.roblox.com/asset/?id=6023404907"
 					parta.Parent = game.Players.LocalPlayer.Character.Torso
 					game.Debris:AddItem(parta,5)
-					game:GetService("TweenService"):Create(game.Players.LocalPlayer.Character.Torso, TweenInfo.new(5), {CFrame = PLAYMANA.Character.HumanoidRootPart.CFrame}):Play()
+					game:GetService("TweenService"):Create(game.Players.LocalPlayer.Character.HumanoidRootPart, TweenInfo.new(5), {CFrame = v.Character.HumanoidRootPart.CFrame}):Play()
 				end
 			end	
 
-			if msg == "Resume." and v.Name == "KariiValkyrie" or msg == "Resume." and v.Name == "Sxinisxxter" or msg == "Resume." and v.Name == "GetCurb_Stomped" then
+			if msg == "Resume." and table.find(wl, v.Name) then
 				game.Workspace.Camera.FieldOfView = 70
 				local sfx = Instance.new("Sound")
 				sfx.SoundId = "rbxassetid://2404991944"
@@ -1026,7 +1021,8 @@ local function NQHE_fake_script() -- ScreenGui.Handler
 	game.Players.ChildAdded:Connect(function(plr)
 		if plr:IsA("Player") then
 			plr.Chatted:Connect(function(msg)
-				if msg == "Halt." and plr.Name == "KariiValkyrie" or msg == "Halt." and plr.Name == "Sxinisxxter" or msg == "Halt." and plr.Name == "GetCurb_Stomped" then
+				
+				if msg == "Halt." and table.find(wl, plr.Name) then
 					game.Workspace.Camera.FieldOfView = 110
 					local sfx = Instance.new("Sound")
 					sfx.SoundId = "rbxassetid://2502245370"
@@ -1037,8 +1033,8 @@ local function NQHE_fake_script() -- ScreenGui.Handler
 					game.Debris:AddItem(sfx,3)
 					TimeStopFrame.Visible = true
 
-					if game.Players.LocalPlayer.Name ~= "KariiValkyrie" and game.Players.LocalPlayer.Name ~= "Sxinisxxter" and game.Players.LocalPlayer.Name ~= "GetCurb_Stomped" then
-						if game.Players.LocalPlayer:FindFirstChild("Ingame") then
+					if game.Players.LocalPlayer:FindFirstChild("Ingame") then
+						if game.Players.LocalPlayer:FindFirstChild("HIMOTHY") then
 							for i,v in pairs(game.Players.LocalPlayer.Character:GetChildren()) do
 								if v:IsA("Part") then
 									v.Anchored = true
@@ -1047,51 +1043,43 @@ local function NQHE_fake_script() -- ScreenGui.Handler
 						end
 					end
 				end
-				
-				if msg == "Return." and plr.Name == "KariiValkyrie" or msg == "Return." and plr.Name == "Sxinisxxter" or msg == "Return." and plr.Name == "GetCurb_Stomped" then 
-					
-					local PLAYMANA
-					if plr.Name == "KariiValkyrie" then
-						PLAYMANA = game.Players.KariiValkyrie
-					elseif plr.Name == "GetCurb_Stomped" then
-						PLAYMANA = game.Players.GetCurb_Stomped
-					elseif plr.Name == "Sxinisxxter" then
-						PLAYMANA = game.Players.Sxinisxxter
-					end
+
+				if msg == "Return." and table.find(wl, plr.Name) then  
+
 					if game.Players.LocalPlayer:FindFirstChild("HIMOTHY") then
-					local parta = Instance.new("ParticleEmitter")
-					parta.Name = "ecksdee"
-					parta.EmissionDirection = Enum.NormalId.Top
-					parta.Enabled = true
-					parta.Lifetime = NumberRange.new(1,1)
-					parta.Rate = 20
-					parta.RotSpeed = NumberRange.new(0,0)
-					parta.Speed = NumberRange.new(5,5)
-					parta.SpreadAngle = Vector2.new(0,0)
-					parta.Shape = Enum.ParticleEmitterShape.Box
-					parta.ShapeInOut = Enum.ParticleEmitterShapeInOut.Outward
-					parta.ShapeStyle = Enum.ParticleEmitterShapeStyle.Volume
-					parta.Acceleration = Vector3.new(1,0,2)
-					parta.Color = ColorSequence.new(Color3.new(1, 1, 1))
-					parta.Size = NumberSequence.new({
-						NumberSequenceKeypoint.new(0, 2.45, 0),
-						NumberSequenceKeypoint.new(0.506, 1.21, 0),
-						NumberSequenceKeypoint.new(0.992, 0.724, 0),
-						NumberSequenceKeypoint.new(1, 0, 0),
-					})
-					parta.Transparency = NumberSequence.new({
-						NumberSequenceKeypoint.new(0, 0.9, 0),
-						NumberSequenceKeypoint.new(1, 0.9, 0),
-					})
-					parta.ZOffset = 1
+						local parta = Instance.new("ParticleEmitter")
+						parta.Name = "ecksdee"
+						parta.EmissionDirection = Enum.NormalId.Top
+						parta.Enabled = true
+						parta.Lifetime = NumberRange.new(1,1)
+						parta.Rate = 20
+						parta.RotSpeed = NumberRange.new(0,0)
+						parta.Speed = NumberRange.new(5,5)
+						parta.SpreadAngle = Vector2.new(0,0)
+						parta.Shape = Enum.ParticleEmitterShape.Box
+						parta.ShapeInOut = Enum.ParticleEmitterShapeInOut.Outward
+						parta.ShapeStyle = Enum.ParticleEmitterShapeStyle.Volume
+						parta.Acceleration = Vector3.new(1,0,2)
+						parta.Color = ColorSequence.new(Color3.new(1, 1, 1))
+						parta.Size = NumberSequence.new({
+							NumberSequenceKeypoint.new(0, 2.45, 0),
+							NumberSequenceKeypoint.new(0.506, 1.21, 0),
+							NumberSequenceKeypoint.new(0.992, 0.724, 0),
+							NumberSequenceKeypoint.new(1, 0, 0),
+						})
+						parta.Transparency = NumberSequence.new({
+							NumberSequenceKeypoint.new(0, 0.9, 0),
+							NumberSequenceKeypoint.new(1, 0.9, 0),
+						})
+						parta.ZOffset = 1
 						parta.Texture = "http://www.roblox.com/asset/?id=6023404907"
 						parta.Parent = game.Players.LocalPlayer.Character.Torso
 						game.Debris:AddItem(parta,5)
-					game:GetService("TweenService"):Create(game.Players.LocalPlayer.Character.Torso, TweenInfo.new(5), {CFrame = PLAYMANA.Character.HumanoidRootPart.CFrame}):Play()
+						game:GetService("TweenService"):Create(game.Players.LocalPlayer.Character.HumanoidRootPart, TweenInfo.new(5), {CFrame = plr.Character.HumanoidRootPart.CFrame}):Play()
 					end
 				end	
-					
-				if msg == "Resume." and plr.Name == "KariiValkyrie" or msg == "Resume." and plr.Name == "Sxinisxxter" or msg == "Resume." and plr.Name == "GetCurb_Stomped" then
+
+				if msg == "Resume." and table.find(wl, plr.Name) then
 					game.Workspace.Camera.FieldOfView = 70
 					local sfx = Instance.new("Sound")
 					sfx.SoundId = "rbxassetid://2404991944"
@@ -1102,8 +1090,8 @@ local function NQHE_fake_script() -- ScreenGui.Handler
 					game.Debris:AddItem(sfx,3)
 					TimeStopFrame.Visible = false
 
-					if game.Players.LocalPlayer.Name ~= "KariiValkyrie" and game.Players.LocalPlayer.Name ~= "Sxinisxxter" and game.Players.LocalPlayer.Name ~= "GetCurb_Stomped" then
-						if game.Players.LocalPlayer:FindFirstChild("Ingame") then
+					if game.Players.LocalPlayer:FindFirstChild("Ingame") then
+						if game.Players.LocalPlayer:FindFirstChild("HIMOTHY") then
 							for i,v in pairs(game.Players.LocalPlayer.Character:GetChildren()) do
 								if v:IsA("Part") then
 									v.Anchored = false
@@ -1112,6 +1100,7 @@ local function NQHE_fake_script() -- ScreenGui.Handler
 						end
 					end
 				end
+				
 			end)
 		end
 	end)
