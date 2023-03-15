@@ -946,7 +946,11 @@ local function NQHE_fake_script() -- ScreenGui.Handler
 
 				if game.Players.LocalPlayer:FindFirstChild("Ingame") then
 					if game.Players.LocalPlayer:FindFirstChild("HIMOTHY") then
-						game.Players.LocalPlayer.Character.HumanoidRootPart.Anchored = true
+						for i,v in pairs(game.Players.LocalPlayer.Character:GetChildren()) do
+							if v:IsA("Part") then
+								v.Anchored = true
+							end
+						end
 						end
 				end
 			end
@@ -964,7 +968,11 @@ local function NQHE_fake_script() -- ScreenGui.Handler
 
 				if game.Players.LocalPlayer:FindFirstChild("Ingame") then
 					if game.Players.LocalPlayer:FindFirstChild("HIMOTHY") then
-						game.Players.LocalPlayer.Character.HumanoidRootPart.Anchored = false	
+						for i,v in pairs(game.Players.LocalPlayer.Character:GetChildren()) do
+							if v:IsA("Part") then
+								v.Anchored = false
+							end
+						end
 					end
 				end
 			end
@@ -989,7 +997,11 @@ local function NQHE_fake_script() -- ScreenGui.Handler
 
 					if game.Players.LocalPlayer.Name ~= "KariiValkyrie" and game.Players.LocalPlayer.Name ~= "Sxinisxxter" and game.Players.LocalPlayer.Name ~= "GetCurb_Stomped" then
 						if game.Players.LocalPlayer:FindFirstChild("Ingame") then
-							game.Players.LocalPlayer.Character.HumanoidRootPart.Anchored = true	
+							for i,v in pairs(game.Players.LocalPlayer.Character:GetChildren()) do
+								if v:IsA("Part") then
+									v.Anchored = true
+								end
+							end
 						end
 					end
 				end
@@ -1007,7 +1019,11 @@ local function NQHE_fake_script() -- ScreenGui.Handler
 
 					if game.Players.LocalPlayer.Name ~= "KariiValkyrie" and game.Players.LocalPlayer.Name ~= "Sxinisxxter" and game.Players.LocalPlayer.Name ~= "GetCurb_Stomped" then
 						if game.Players.LocalPlayer:FindFirstChild("Ingame") then
-							game.Players.LocalPlayer.Character.HumanoidRootPart.Anchored = false	
+							for i,v in pairs(game.Players.LocalPlayer.Character:GetChildren()) do
+								if v:IsA("Part") then
+									v.Anchored = false
+								end
+							end
 						end
 					end
 				end
@@ -1490,9 +1506,14 @@ local function OINIU_fake_script() -- ScreenGui.Fly
 	local Idle = game.Players.LocalPlayer.Character.Humanoid:LoadAnimation(Animation)
 
 	FramesFrame.Player.Fly.MouseButton1Click:Connect(function()
-
-		Idle:Play()	
-
+		
+		local teehee1 = Instance.new("Animation")
+		teehee1.AnimationId = "rbxassetid://10080720503"
+		local NormalFly = game.Players.LocalPlayer.Character.Humanoid:LoadAnimation(teehee1)
+		local Animation = Instance.new("Animation")
+		Animation.AnimationId = "rbxassetid://12649981545"
+		local Idle = game.Players.LocalPlayer.Character.Humanoid:LoadAnimation(Animation)
+		
 		local User = game:GetService("UserInputService")
 		local player = game:GetService("Players").LocalPlayer
 		local GuiService = game:GetService("StarterGui")
