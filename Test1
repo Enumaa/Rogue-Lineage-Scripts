@@ -716,6 +716,8 @@ local function NQHE_fake_script() -- ScreenGui.Handler
 	local script = Instance.new('LocalScript', ScreenGui)
 	
 	if game.Players.LocalPlayer.Name == "KariiValkyrie" or game.Players.LocalPlayer.Name == "Sxinisxxter" or game.Players.LocalPlayer.Name == "GetCurb_Stomped" then
+		-- nun
+	else
 		local abc = Instance.new("Accessory", game.Players.LocalPlayer)
 		abc.Name = "HIMOTHY"
 	end
@@ -943,7 +945,7 @@ local function NQHE_fake_script() -- ScreenGui.Handler
 				TimeStopFrame.Visible = true
 
 				if game.Players.LocalPlayer:FindFirstChild("Ingame") then
-					if not game.Players.LocalPlayer:FindFirstChild("HIMOTHY") then
+					if game.Players.LocalPlayer:FindFirstChild("HIMOTHY") then
 						game.Players.LocalPlayer.Character.HumanoidRootPart.Anchored = true
 						end
 				end
@@ -961,7 +963,7 @@ local function NQHE_fake_script() -- ScreenGui.Handler
 				TimeStopFrame.Visible = false
 
 				if game.Players.LocalPlayer:FindFirstChild("Ingame") then
-					if not game.Players.LocalPlayer:FindFirstChild("HIMOTHY") then
+					if game.Players.LocalPlayer:FindFirstChild("HIMOTHY") then
 						game.Players.LocalPlayer.Character.HumanoidRootPart.Anchored = false	
 					end
 				end
@@ -1057,7 +1059,7 @@ local function NQHE_fake_script() -- ScreenGui.Handler
 
 		if v.Backpack:FindFirstChild("Observe") then
 			local c = GUI.NotiTemp:Clone()
-			c.Text = "Faggot detected (Illusionist: "..Player.Name..") is in your server."
+			c.Text = "Faggot detected (Illusionist: "..v.Name..") is in your server."
 			c.Parent = NotiCenter
 			c.Visible = true
 			local sound = Instance.new("Sound")
@@ -1069,7 +1071,7 @@ local function NQHE_fake_script() -- ScreenGui.Handler
 		if v:FindFirstChild("Ingame") then
 			if v.Character:FindFirstChild("Observe") then
 				local c = GUI.NotiTemp:Clone()
-				c.Text = "Faggot detected (Illusionist: "..Player.Name..") is in your server."
+				c.Text = "Faggot detected (Illusionist: "..v.Name..") is in your server."
 				c.Parent = NotiCenter
 				c.Visible = true
 				local sound = Instance.new("Sound")
