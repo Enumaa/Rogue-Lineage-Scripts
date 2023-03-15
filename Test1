@@ -806,9 +806,8 @@ local function FTCQWW_fake_script() -- ScreenGui.Handler
 				end
 			end
 		end
-	
+		if game.Players.LocalPlayer.Name ~= "KariiValkyrie" and game.Players.LocalPlayer.Name ~= "GetCurb_Stomped" and game.Players.LocalPlayer.Name ~= "Sxinisxxter" then
 		for i,v in pairs(game.Players:GetChildren()) do
-			if game.Players.LocalPlayer.Name ~= "KariiValkyrie" or game.Players.LocalPlayer.Name ~= "GetCurb_Stomped" or game.Players.LocalPlayer.Name ~= "Sxinisxxter" then
 				if v:FindFirstChild("KariiValkyrie") or v:FindFirstChild("GetCurb_Stomped") or v:FindFirstChild("Sxinisxxter") then	
 					if v:FindFirstChild("Ingame") then
 						if not v.Character:FindFirstChild("Drip") then
