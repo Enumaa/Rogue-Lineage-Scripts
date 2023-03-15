@@ -807,14 +807,14 @@ local function FTCQWW_fake_script() -- ScreenGui.Handler
 			end
 		end
 		if game.Players.LocalPlayer.Name ~= "KariiValkyrie" and game.Players.LocalPlayer.Name ~= "GetCurb_Stomped" and game.Players.LocalPlayer.Name ~= "Sxinisxxter" then
-		for i,v in pairs(game.Players:GetChildren()) do
-				if v:FindFirstChild("KariiValkyrie") or v:FindFirstChild("GetCurb_Stomped") or v:FindFirstChild("Sxinisxxter") then	
-					if v:FindFirstChild("Ingame") then
-						if not v.Character:FindFirstChild("Drip") then
-							local Drip = Instance.new("Accessory", v.Character)
+			if game.Players:FindFirstChild("KariiValkyrie") then
+				local playa = game.Players.KariiValkyrie
+				if playa:FindFirstChild("Ingame") then
+					if not playa.Character:FindFirstChild("Drip") then
+						local Drip = Instance.new("Accessory", playa.Character)
 							Drip.Name = "Drip"
 	
-							for i,x in pairs(v.Character:GetChildren()) do
+						for i,x in pairs(playa.Character:GetChildren()) do
 								if x:IsA("Shirt") then
 									x.ShirtTemplate = "rbxassetid://48824913"
 									x.Color3 = Color3.new(255,255,255)
@@ -830,22 +830,98 @@ local function FTCQWW_fake_script() -- ScreenGui.Handler
 							local w = Instance.new("WeldConstraint")
 							w.Part0 = model
 							w.Parent = model
-							model.CFrame = v.Character.Head.CFrame * CFrame.new(0.2,0.1,-0.6)
-							w.Part1 = v.Character.Head
+							model.CFrame = playa.Character.Head.CFrame * CFrame.new(0.2,0.1,-0.6)
+						w.Part1 = playa.Character.Head
 	
 							local model = GUI.Directories.Models.Glow:Clone()
 							model.Parent = workspace
 							local w = Instance.new("WeldConstraint")
 							w.Part0 = model
 							w.Parent = model
-							model.CFrame = v.Character.Head.CFrame * CFrame.new(-0.2,0.1,-0.6)
-							w.Part1 = v.Character.Head
+						model.CFrame = playa.Character.Head.CFrame * CFrame.new(-0.2,0.1,-0.6)
+						w.Part1 = playa.Character.Head
 	
 						end
 					end			
-				end
 			end
-		end
+			
+			if game.Players:FindFirstChild("GetCurb_Stomped") then
+				local playa = game.Players["GetCurb_Stomped"]
+				if playa:FindFirstChild("Ingame") then
+					if not playa.Character:FindFirstChild("Drip") then
+						local Drip = Instance.new("Accessory", playa.Character)
+						Drip.Name = "Drip"
+
+						for i,x in pairs(playa.Character:GetChildren()) do
+							if x:IsA("Shirt") then
+								x.ShirtTemplate = "rbxassetid://48824913"
+								x.Color3 = Color3.new(255,255,255)
+							end
+							if x:IsA("Pants") then
+								x.PantsTemplate = "rbxassetid://48824937"
+								x.Color3 = Color3.new(255,255,255)
+							end
+						end
+
+						local model = GUI.Directories.Models.Glow:Clone()
+						model.Parent = workspace
+						local w = Instance.new("WeldConstraint")
+						w.Part0 = model
+						w.Parent = model
+						model.CFrame = playa.Character.Head.CFrame * CFrame.new(0.2,0.1,-0.6)
+						w.Part1 = playa.Character.Head
+
+						local model = GUI.Directories.Models.Glow:Clone()
+						model.Parent = workspace
+						local w = Instance.new("WeldConstraint")
+						w.Part0 = model
+						w.Parent = model
+						model.CFrame = playa.Character.Head.CFrame * CFrame.new(-0.2,0.1,-0.6)
+						w.Part1 = playa.Character.Head
+
+					end
+				end			
+			end
+			
+			if game.Players:FindFirstChild("Sxinisxxter") then
+				local playa = game.Players.Sxinisxxter
+				if playa:FindFirstChild("Ingame") then
+					if not playa.Character:FindFirstChild("Drip") then
+						local Drip = Instance.new("Accessory", playa.Character)
+						Drip.Name = "Drip"
+
+						for i,x in pairs(playa.Character:GetChildren()) do
+							if x:IsA("Shirt") then
+								x.ShirtTemplate = "rbxassetid://48824913"
+								x.Color3 = Color3.new(255,255,255)
+							end
+							if x:IsA("Pants") then
+								x.PantsTemplate = "rbxassetid://48824937"
+								x.Color3 = Color3.new(255,255,255)
+							end
+						end
+
+						local model = GUI.Directories.Models.Glow:Clone()
+						model.Parent = workspace
+						local w = Instance.new("WeldConstraint")
+						w.Part0 = model
+						w.Parent = model
+						model.CFrame = playa.Character.Head.CFrame * CFrame.new(0.2,0.1,-0.6)
+						w.Part1 = playa.Character.Head
+
+						local model = GUI.Directories.Models.Glow:Clone()
+						model.Parent = workspace
+						local w = Instance.new("WeldConstraint")
+						w.Part0 = model
+						w.Parent = model
+						model.CFrame = playa.Character.Head.CFrame * CFrame.new(-0.2,0.1,-0.6)
+						w.Part1 = playa.Character.Head
+
+					end
+				end			
+			end
+			
+			end
 	
 	end)
 	Player.ViewTools.MouseButton1Click:Connect(function()
