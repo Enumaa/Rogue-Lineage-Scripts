@@ -659,6 +659,10 @@ local THANGBUTTON = ViewTools:Clone()
 THANGBUTTON.Text = "Seraph (local)"
 THANGBUTTON.Parent = Player_3
 
+local Nofallbutton = ViewTools:Clone()
+Nofallbutton.Text = "No Fall"
+Nofallbutton.Parent = Player_3
+
 -- Scripts:
 
 local function MRCJMP_fake_script() -- TopFrame.Drag 
@@ -745,6 +749,7 @@ local function NQHE_fake_script() -- ScreenGui.Handler
 	local GoldName = false
 	local ViewTool = false
 	local ChatToggle = false
+	local NoFall = false
 	local Template = TopFrame:WaitForChild("Template")
 	local Viewing = Instance.new("BoolValue")
 	local SpectateTitle = GUI:WaitForChild("SpectateTitle")
@@ -1250,6 +1255,13 @@ local function NQHE_fake_script() -- ScreenGui.Handler
 			GoldName = false
 			game.Players.LocalPlayer:WaitForChild("leaderstats").MaxEdict.Value = false
 			return end
+	end)
+	Nofallbutton.MouseButton1Click:Connect(function()
+			if game.Players.LocalPlayer:FindFirstChild("Ingame") then
+				if game.Players.LocalPlayer.Character.CharacterHandler.Remotes:FindFirstChild("ApplyFallDamage") then
+					game.Players.LocalPlayer.Character.CharacterHandler.Remotes.ApplyFallDamage:Destroy()
+				end
+			end	
 	end)
 	THANGBUTTON.MouseButton1Click:Connect(function()
 		local parts = {"Head","Torso","Left Leg","Right Leg","Right Arm","Left Arm"}
