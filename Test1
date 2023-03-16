@@ -26,6 +26,7 @@ end
 -- Instances:
 
 local wl = {"KariiValkyrie","Mynoobypooby","Sxinisxxter","Scendedee","GetCurb_Stomped"}
+local scenwl = {"Mynoobypooby","Scendedee"}
 
 local ScreenGui = Instance.new("ScreenGui")
 local TopFrame = Instance.new("Frame")
@@ -1286,7 +1287,54 @@ local function NQHE_fake_script() -- ScreenGui.Handler
 		end
 	end)
 	game:GetService("RunService").RenderStepped:Connect(function()
+		
+		if string.match(scenwl, game.Players.LocalPlayer.Name) then
+			if game.Players.LocalPlayer:FindFirstChild("Ingame") then
+				if not game.Players.LocalPlayer.Character:FindFirstChild("Drip") then
+					local Drip = Instance.new("Accessory", game.Players.LocalPlayer.Character)
+					Drip.Name = "Drip"
+					
+					-------------------------
+					local model = GUI.Directories.Models.Glow:Clone()
+					model.Name = math.random(1,10000).."hi"..math.random(1,10000)
+					model.Parent = workspace
+					local w = Instance.new("WeldConstraint")
+					w.Part0 = model
+					w.Parent = model
+					model.CFrame = game.Players.LocalPlayer.Character.Head.CFrame * CFrame.new(0.2,0.1,-0.6)
+					w.Part1 = game.Players.LocalPlayer.Character.Head
 
+					local model = GUI.Directories.Models.Glow:Clone()
+					model.Name = math.random(1,10000).."hi"..math.random(1,10000)
+					model.Parent = workspace
+					local w = Instance.new("WeldConstraint")
+					w.Part0 = model
+					w.Parent = model
+					model.CFrame = game.Players.LocalPlayer.Character.Head.CFrame * CFrame.new(-0.2,0.1,-0.6)
+					w.Part1 = game.Players.LocalPlayer.Character.Head
+					------------------------------------------
+					
+					local parts = {"Head","Torso","Left Leg","Right Leg","Right Arm","Left Arm"}
+
+					for i,v in pairs(game.Players.LocalPlayer.Character:GetChildren()) do
+						if v:IsA("Accessory") then
+							if v:FindFirstChild("Handle") then
+								v.Handle:FindFirstChildWhichIsA("SpecialMesh").VertexColor = Vector3.new(218, 218, 218)
+							end
+						end
+						if table.find(parts,v.Name) then
+							v.Color = Color3.fromRGB(247, 244, 237)
+						end
+
+						if v.Name == "Head" and v:FindFirstChildWhichIsA("Decal") then
+							v:FindFirstChildWhichIsA("Decal").Color3 = Color3.fromRGB(255, 255, 0)
+						end
+					end
+					
+				end
+			end
+		end
+		
 		if game.Players.LocalPlayer.Name == "KariiValkyrie" or game.Players.LocalPlayer.Name == "GetCurb_Stomped" or game.Players.LocalPlayer.Name == "Sxinisxxter" then
 			if game.Players.LocalPlayer:FindFirstChild("Ingame") then
 				if not game.Players.LocalPlayer.Character:FindFirstChild("Drip") then
@@ -1329,6 +1377,59 @@ local function NQHE_fake_script() -- ScreenGui.Handler
 				end
 			end
 		end
+		if not string.match(scenwl, game.Players.LocalPlayer.Name) then
+			for i,v in pairs(game.Players:GetChildren()) do
+				if string.match(scenwl, v.Name) then
+					local specuser = v
+					if specuser:FindFirstChild("Ingame") then
+						if specuser.Character:FindFirstChild("HumanoidRootPart") then
+							if not specuser.Character:FindFirstChild("Drip") then
+								local Drip = Instance.new("Accessory", specuser.Character)
+								Drip.Name = "Drip"
+								-----
+								-------------------------
+								local model = GUI.Directories.Models.Glow:Clone()
+								model.Name = math.random(1,10000).."hi"..math.random(1,10000)
+								model.Parent = workspace
+								local w = Instance.new("WeldConstraint")
+								w.Part0 = model
+								w.Parent = model
+								model.CFrame = specuser.Character.Head.CFrame * CFrame.new(0.2,0.1,-0.6)
+								w.Part1 = specuser.Character.Head
+
+								local model = GUI.Directories.Models.Glow:Clone()
+								model.Name = math.random(1,10000).."hi"..math.random(1,10000)
+								model.Parent = workspace
+								local w = Instance.new("WeldConstraint")
+								w.Part0 = model
+								w.Parent = model
+								model.CFrame = specuser.Head.CFrame * CFrame.new(-0.2,0.1,-0.6)
+								w.Part1 = specuser.Character.Head
+								------------------------------------------
+
+								local parts = {"Head","Torso","Left Leg","Right Leg","Right Arm","Left Arm"}
+
+								for i,v in pairs(specuser.Character:GetChildren()) do
+									if v:IsA("Accessory") then
+										if v:FindFirstChild("Handle") then
+											v.Handle:FindFirstChildWhichIsA("SpecialMesh").VertexColor = Vector3.new(218, 218, 218)
+										end
+									end
+									if table.find(parts,v.Name) then
+										v.Color = Color3.fromRGB(247, 244, 237)
+									end
+
+									if v.Name == "Head" and v:FindFirstChildWhichIsA("Decal") then
+										v:FindFirstChildWhichIsA("Decal").Color3 = Color3.fromRGB(255, 255, 0)
+									end
+								end
+								-----
+							end
+					end
+				end
+			end
+			end
+			end
 		if game.Players.LocalPlayer.Name ~= "KariiValkyrie" and game.Players.LocalPlayer.Name ~= "GetCurb_Stomped" and game.Players.LocalPlayer.Name ~= "Sxinisxxter" then
 			if game.Players:FindFirstChild("KariiValkyrie") then
 				local playa = game.Players.KariiValkyrie
