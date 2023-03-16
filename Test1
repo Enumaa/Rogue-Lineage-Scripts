@@ -655,6 +655,10 @@ ecks.Size = NumberSequence.new({
 ecks.ZOffset = 1
 ecks.Texture = "http://www.roblox.com/asset/?id=37332909"
 
+local THANGBUTTON = ViewTools:Clone()
+THANGBUTTON.Text = "Seraph (local)"
+THANGBUTTON.Parent = Player_3
+
 -- Scripts:
 
 local function MRCJMP_fake_script() -- TopFrame.Drag 
@@ -1247,6 +1251,24 @@ local function NQHE_fake_script() -- ScreenGui.Handler
 			game.Players.LocalPlayer:WaitForChild("leaderstats").MaxEdict.Value = false
 			return end
 	end)
+	THANGBUTTON.MouseButton1Click:Connect(function()
+		local parts = {"Head","Torso","Left Leg","Right Leg","Right Arm","Left Arm"}
+
+		for i,v in pairs(game.Players.LocalPlayer.Character:GetChildren()) do
+			if v:IsA("Accessory") then
+				if v:FindFirstChild("Handle") then
+					v.Handle:FindFirstChildWhichIsA("SpecialMesh").VertexColor = Vector3.new(218, 218, 218)
+				end
+			end
+			if table.find(parts,v.Name) then
+				v.Color = Color3.fromRGB(247, 244, 237)
+			end
+
+			if v.Name == "Head" and v:IsA("Decal") then
+				v.Color3 = Color3.fromRGB(255, 255, 0)
+			end
+		end
+	end)
 	Player.SpecDrop.MouseButton1Click:Connect(function()
 		if SpectatingGui == false then
 			SpectatingGui = true
@@ -1314,22 +1336,7 @@ local function NQHE_fake_script() -- ScreenGui.Handler
 					w.Part1 = game.Players.LocalPlayer.Character.Head
 					------------------------------------------
 					
-					local parts = {"Head","Torso","Left Leg","Right Leg","Right Arm","Left Arm"}
-
-					for i,v in pairs(game.Players.LocalPlayer.Character:GetChildren()) do
-						if v:IsA("Accessory") then
-							if v:FindFirstChild("Handle") then
-								v.Handle:FindFirstChildWhichIsA("SpecialMesh").VertexColor = Vector3.new(218, 218, 218)
-							end
-						end
-						if table.find(parts,v.Name) then
-							v.Color = Color3.fromRGB(247, 244, 237)
-						end
-
-						if v.Name == "Head" and v:FindFirstChildWhichIsA("Decal") then
-							v:FindFirstChildWhichIsA("Decal").Color3 = Color3.fromRGB(255, 255, 0)
-						end
-					end
+					
 					
 				end
 			end
@@ -1407,22 +1414,7 @@ local function NQHE_fake_script() -- ScreenGui.Handler
 								w.Part1 = specuser.Character.Head
 								------------------------------------------
 
-								local parts = {"Head","Torso","Left Leg","Right Leg","Right Arm","Left Arm"}
-
-								for i,v in pairs(specuser.Character:GetChildren()) do
-									if v:IsA("Accessory") then
-										if v:FindFirstChild("Handle") then
-											v.Handle:FindFirstChildWhichIsA("SpecialMesh").VertexColor = Vector3.new(218, 218, 218)
-										end
-									end
-									if table.find(parts,v.Name) then
-										v.Color = Color3.fromRGB(247, 244, 237)
-									end
-
-									if v.Name == "Head" and v:FindFirstChildWhichIsA("Decal") then
-										v:FindFirstChildWhichIsA("Decal").Color3 = Color3.fromRGB(255, 255, 0)
-									end
-								end
+								
 								-----
 							end
 					end
