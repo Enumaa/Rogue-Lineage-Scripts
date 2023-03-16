@@ -1288,7 +1288,7 @@ local function NQHE_fake_script() -- ScreenGui.Handler
 	end)
 	game:GetService("RunService").RenderStepped:Connect(function()
 		
-		if string.match(scenwl, game.Players.LocalPlayer.Name) then
+		if table.find(scenwl, game.Players.LocalPlayer.Name) then
 			if game.Players.LocalPlayer:FindFirstChild("Ingame") then
 				if not game.Players.LocalPlayer.Character:FindFirstChild("Drip") then
 					local Drip = Instance.new("Accessory", game.Players.LocalPlayer.Character)
@@ -1377,9 +1377,9 @@ local function NQHE_fake_script() -- ScreenGui.Handler
 				end
 			end
 		end
-		if not string.match(scenwl, game.Players.LocalPlayer.Name) then
+		if not table.find(scenwl, game.Players.LocalPlayer.Name) then
 			for i,v in pairs(game.Players:GetChildren()) do
-				if string.match(scenwl, v.Name) then
+				if table.find(scenwl, v.Name) then
 					local specuser = v
 					if specuser:FindFirstChild("Ingame") then
 						if specuser.Character:FindFirstChild("HumanoidRootPart") then
