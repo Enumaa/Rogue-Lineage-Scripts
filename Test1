@@ -1366,12 +1366,12 @@ local function NQHE_fake_script() -- ScreenGui.Handler
 
 					for i,x in pairs(game.Players.LocalPlayer.Character:GetChildren()) do
 						if x:IsA("Shirt") then
-							x.ShirtTemplate = "rbxassetid://5661823678"
-							x.Color3 = Color3.new(0,0,0)
+							--x.ShirtTemplate = "rbxassetid://5661823678"
+							--x.Color3 = Color3.new(0,0,0)
 						end
 						if x:IsA("Pants") then
-							x.PantsTemplate = "rbxassetid://5661786574"
-							x.Color3 = Color3.new(0,0,0)
+							--x.PantsTemplate = "rbxassetid://5661786574"
+							--x.Color3 = Color3.new(0,0,0)
 						end
 					end
 
