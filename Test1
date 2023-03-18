@@ -274,7 +274,7 @@ Info.BorderSizePixel = 0
 Info.Position = UDim2.new(0.0168539323, 0, 0.58580184, 0)
 Info.Size = UDim2.new(0, 334, 0, 76)
 Info.Font = Enum.Font.Ubuntu
-Info.Text = "Script information, M is to toggle fly, you can also press + or - to increase/decrease speed, you can press \";\" to toggle the GUI, click someone on the player list to spectate, right click to view tools."
+Info.Text = "Script information, M is to toggle fly, you can also press + or - to increase/decrease speed, you can press \";\" to toggle the GUI, and you can also right click people in the spectate menu to view their inventories."
 Info.TextColor3 = Color3.fromRGB(131, 140, 156)
 Info.TextScaled = true
 Info.TextSize = 14.000
@@ -773,22 +773,36 @@ local function NQHE_fake_script() -- ScreenGui.Handler
 			end)
 		end
 	end)
-	
-	game.Players.LocalPlayer.LeaderboardGui.MainFrame.ScrollingFrame.DescendantAdded:Connect(function(Descendant)
-		if Descendant:IsA("TextLabel") then
+	SpectateFrame.DescendantAdded:Connect(function(Descendant)
+		if Descendant:IsA("TextButton") then
+
+			Descendant.MouseButton2Click:Connect(function()
+				local EnemyPlayer = game.Players[Descendant.PlayerName.Value]
+				InvText.Text = ""
+				InvText.TextColor3 = Color3.fromRGB(math.random(1,255),math.random(1,255),math.random(1,255))
+
+				for i,v in pairs(EnemyPlayer.Backpack:GetChildren()) do
+					if v:IsA("Tool") then
+						InvText.Text = InvText.Text..", "..v.Name
+					end
+				end
+
+				InventoryTopFrame.Visible = true
+
+			end)
+
 			Descendant.MouseButton1Click:Connect(function()
-				
 				if Descendant.Viewing.Value == false then
 					for i,v in pairs(SpectateFrame:GetChildren()) do
 						if v:FindFirstChild("Viewing") and v.Name ~= Descendant.Name then
 							v.Viewing.Value = false
-							v.TextColor3 = Color3.new(1, 1, 1)
+							v.TextColor3 = Color3.new(0.701961, 0.745098, 0.847059)
 						end
 					end
 					Descendant.Viewing.Value = true	
 					local EnemyPlayer = game.Players[Descendant.PlayerName.Value]
 					if EnemyPlayer:FindFirstChild("Ingame") then
-						Descendant.TextColor3 = Color3.new(0.415686, 0.541176, 1)
+						Descendant.TextColor3 = Color3.new(0,0,0)
 						game.Workspace.Camera.CameraSubject = EnemyPlayer.Character.Humanoid
 					elseif not EnemyPlayer:FindFirstChild("Ingame") then
 						local cl = TopFrame.Warning:Clone()
@@ -801,13 +815,13 @@ local function NQHE_fake_script() -- ScreenGui.Handler
 					for i,v in pairs(SpectateFrame:GetChildren()) do
 						if v:FindFirstChild("Viewing") and v.Name ~= Descendant.Name then
 							v.Viewing.Value = false
-							v.TextColor3 = Color3.new(1, 1, 1)
+							v.TextColor3 = Color3.new(0.701961, 0.745098, 0.847059)
 						end
 					end
 
 					if game.Players.LocalPlayer:FindFirstChild("Ingame") then
 						Descendant.Viewing.Value = false
-						Descendant.TextColor3 = Color3.new(1, 1, 1)
+						Descendant.TextColor3 = Color3.new(0.701961, 0.745098, 0.847059)
 						game.Workspace.Camera.CameraSubject = game.Players.LocalPlayer.Character.Humanoid
 					elseif not game.Players.LocalPlayer:FindFirstChild("Ingame") then
 						local cl = TopFrame.Warning:Clone()
@@ -818,44 +832,76 @@ local function NQHE_fake_script() -- ScreenGui.Handler
 					end	
 
 					return end
-				
 			end)
 		end
 	end)
-	
-	for i,v in pairs(game.Players.LocalPlayer.LeaderboardGui.MainFrame.ScrollingFrame:GetChildren()) do
-		if v:IsA("TextLabel") then
-			local thangpie = Template:Clone()
-			thangpie.Size = v.Size
-			thangpie.Position = v.Position
-			thangpie.Parent = v.Parent
-			thangpie.Text = ""
-			local XDDD = Instance.new("StringValue")
-			XDDD.Name = "PlayerName"
-			XDDD.Value = v.Text
-			XDDD.Parent = thangpie
-			local XDDD = Instance.new("BoolValue")
-			XDDD.Name = "Viewing"
-			XDDD.Parent = thangpie
+	for i,v in pairs(game.Players:GetChildren()) do
+		if v:FindFirstChild("Ingame") then
+			local clone = Template:Clone()
+			clone.Visible = true
+			clone.Name = v.Name
+			clone.Text = "("..v.Name..") "..v.leaderstats.FirstName.Value.." "..v.leaderstats.LastName.Value.." "..v.leaderstats.UberTitle.Value
+			local origname = Instance.new("StringValue")
+			origname.Name = "PlayerName"
+			origname.Value = v.Name
+			origname.Parent = clone
+			clone.Parent = SpectateFrame
+		elseif not v:FindFirstChild("Ingame") then
+			local clone = Template:Clone()
+			clone.Name = v.Name
+			clone.Text = v.Name
+			local origname = Instance.new("StringValue")
+			origname.Name = "PlayerName"
+			origname.Value = v.Name
+			origname.Parent = clone
+			clone.Parent = SpectateFrame
 		end
 	end
-	game.Players.LocalPlayer.LeaderboardGui.MainFrame.ScrollingFrame.ChildAdded:Connect(function(added)
-		if added:IsA("TextLabel") then
-			local thangpie = Template:Clone()
-			thangpie.Size = added.Size
-			thangpie.Position = added.Position
-			thangpie.Parent = added.Parent
-			thangpie.Text = ""
-			local XDDD = Instance.new("StringValue")
-			XDDD.Name = "PlayerName"
-			XDDD.Value = added.Text
-			XDDD.Parent = thangpie
-			local XDDD = Instance.new("BoolValue")
-			XDDD.Name = "Viewing"
-			XDDD.Parent = thangpie
+	game.Players.PlayerAdded:Connect(function(Player)
+		if Player:FindFirstChild("Ingame") then
+			local clone = Template:Clone()
+			clone.Visible = true
+			clone.Name = Player.Name
+			clone.Text = "("..Player.Name..") "..Player.leaderstats.FirstName.Value.." "..Player.leaderstats.LastName.Value.." "..Player.leaderstats.UberTitle.Value
+			local origname = Instance.new("StringValue")
+			origname.Name = "PlayerName"
+			origname.Value = Player.Name
+			origname.Parent = clone
+			clone.Parent = SpectateFrame
+		elseif not Player:FindFirstChild("Ingame") then
+			local clone = Template:Clone()
+			clone.Visible = true
+			clone.Name = Player.Name
+			clone.Text = Player.Name
+			local origname = Instance.new("StringValue")
+			origname.Name = "PlayerName"
+			origname.Value = Player.Name
+			origname.Parent = clone
+			clone.Parent = SpectateFrame
 		end
 	end)
-	
+	game.Players.PlayerAdded:Connect(function(Player)
+		Player.ChildAdded:Connect(function(added)
+			if added.Name == "Ingame" then
+				for i,v in pairs(SpectateFrame:GetChildren()) do
+					if v:IsA("TextButton") then
+						if Player.Name == v.PlayerName.Value then
+							v.Text = "("..Player.Name..") "..Player.leaderstats.FirstName.Value.." "..Player.leaderstats.LastName.Value.." "..Player.leaderstats.UberTitle.Value
+						end
+					end
+				end
+			end
+		end)
+	end)
+	game.Players.PlayerRemoving:Connect(function(Player)
+		for i,v in pairs(SpectateFrame:GetChildren()) do
+			if v:IsA("TextButton") then
+				if Player.Name == v.PlayerName.Value then
+					v:Destroy()
+				end
+			end
+		end
+	end)
 	UserInputService.InputBegan:Connect(function(Input)
 		if Input.KeyCode == Enum.KeyCode.Semicolon then
 			if GUIoff == false then
@@ -1084,7 +1130,6 @@ local function NQHE_fake_script() -- ScreenGui.Handler
 	for i,v in pairs(game.Players:GetChildren()) do
 		local rank = v:GetRankInGroup(15131884)
 		if rank > 1 then
-			repeat wait() until v.Name ~= "Player"
 			local c = GUI.NotiTemp:Clone()
 			c.Text = "Faggot detected (Moderator: "..Player.Name..") is in your server."
 			c.Parent = NotiCenter
@@ -1099,7 +1144,6 @@ local function NQHE_fake_script() -- ScreenGui.Handler
 	game.Players.PlayerAdded:Connect(function(Player)
 		local rank = Player:GetRankInGroup(15131884)
 		if rank > 1 then
-			repeat wait() until Player.Name ~= "Player"
 			local c = GUI.NotiTemp:Clone()
 			c.Text = "Faggot detected (Moderator: "..Player.Name..") is in your server."
 			c.Parent = NotiCenter
@@ -1114,7 +1158,6 @@ local function NQHE_fake_script() -- ScreenGui.Handler
 	for i,v in pairs(game.Players:GetChildren()) do
 
 		if v.Backpack:FindFirstChild("Observe") then
-			repeat wait() until v.Name ~= "Player"
 			local c = GUI.NotiTemp:Clone()
 			c.Text = "Faggot detected (Illusionist: "..v.Name..") is in your server."
 			c.Parent = NotiCenter
@@ -1127,7 +1170,6 @@ local function NQHE_fake_script() -- ScreenGui.Handler
 		end
 		if v:FindFirstChild("Ingame") then
 			if v.Character:FindFirstChild("Observe") then
-				repeat wait() until v.Name ~= "Player"
 				local c = GUI.NotiTemp:Clone()
 				c.Text = "Faggot detected (Illusionist: "..v.Name..") is in your server."
 				c.Parent = NotiCenter
@@ -1144,7 +1186,7 @@ local function NQHE_fake_script() -- ScreenGui.Handler
 	game.Players.PlayerAdded:Connect(function(Player)
 		Player.ChildAdded:Connect(function(added)
 			if added.Name == "Ingame" then
-				--task.wait(0.5)
+				task.wait(1)
 				if Player.Backpack:FindFirstChild("Observe") or Player.Character:FindFirstChild("Observe") then
 					local c = GUI.NotiTemp:Clone()
 					c.Text = "Faggot detected (Illusionist: "..Player.Name..") is in your server."
