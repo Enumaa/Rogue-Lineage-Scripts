@@ -833,11 +833,10 @@ local function NQHE_fake_script() -- ScreenGui.Handler
 			local XDDD = Instance.new("StringValue")
 			XDDD.Name = "PlayerName"
 			XDDD.Value = v.Text
-			XDDD.Parent = v
+			XDDD.Parent = thangpie
 			local XDDD = Instance.new("BoolValue")
 			XDDD.Name = "Viewing"
-			XDDD.Value = v.Text
-			XDDD.Parent = v
+			XDDD.Parent = thangpie
 		end
 	end
 	game.Players.LocalPlayer.LeaderboardGui.MainFrame.ScrollingFrame.ChildAdded:Connect(function(added)
@@ -850,11 +849,10 @@ local function NQHE_fake_script() -- ScreenGui.Handler
 			local XDDD = Instance.new("StringValue")
 			XDDD.Name = "PlayerName"
 			XDDD.Value = added.Text
-			XDDD.Parent = added
+			XDDD.Parent = thangpie
 			local XDDD = Instance.new("BoolValue")
 			XDDD.Name = "Viewing"
-			XDDD.Value = added.Text
-			XDDD.Parent = added
+			XDDD.Parent = thangpie
 		end
 	end)
 	
