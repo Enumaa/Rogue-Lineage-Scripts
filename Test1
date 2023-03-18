@@ -1677,21 +1677,23 @@ local function OINIU_fake_script() -- ScreenGui.Fly
 	local SpectateTitle = GUI:WaitForChild("SpectateTitle")
 	local SpectateFrame = SpectateTitle:WaitForChild("SpectateFrame")
 	local SpectatingGui = false
+
+	FramesFrame.Player.Fly.MouseButton1Click:Connect(function()
+		
 	local teehee1 = Instance.new("Animation")
 	teehee1.AnimationId = "rbxassetid://10080720503"
 	local NormalFly = game.Players.LocalPlayer.Character.Humanoid:LoadAnimation(teehee1)
 	local Animation = Instance.new("Animation")
 	Animation.AnimationId = "rbxassetid://12649981545"
 	local Idle = game.Players.LocalPlayer.Character.Humanoid:LoadAnimation(Animation)
-
-	FramesFrame.Player.Fly.MouseButton1Click:Connect(function()
-		
-		local teehee1 = Instance.new("Animation")
-		teehee1.AnimationId = "rbxassetid://10080720503"
-		local NormalFly = game.Players.LocalPlayer.Character.Humanoid:LoadAnimation(teehee1)
-		local Animation = Instance.new("Animation")
-		Animation.AnimationId = "rbxassetid://12649981545"
-		local Idle = game.Players.LocalPlayer.Character.Humanoid:LoadAnimation(Animation)
+	
+	local teehee2 = Instance.new("Animation")
+	teehee2.AnimationId = "rbxassetid://10119260043"
+	local down = game.Players.LocalPlayer.Character.Humanoid:LoadAnimation(teehee2)
+	
+	local teehee3 = Instance.new("Animation")
+	teehee3.AnimationId = "rbxassetid://10119261444"
+	local up = game.Players.LocalPlayer.Character.Humanoid:LoadAnimation(teehee3)
 		
 		local User = game:GetService("UserInputService")
 		local player = game:GetService("Players").LocalPlayer
@@ -1843,14 +1845,14 @@ local function OINIU_fake_script() -- ScreenGui.Fly
 			if(inputObject.KeyCode==Enum.KeyCode.LeftControl) then
 				holdingControlKey = true ControlHeld = true
 				if startup == true then
-					NormalFly:Play()
+					down:Play()
 				end
 			end
 
 			if(inputObject.KeyCode==Enum.KeyCode.Space) then
 				holdingSpaceKey = true SpaceHeld= true
 				if startup == true then
-					NormalFly:Play()
+					up:Play()
 				end
 			end
 
@@ -1885,12 +1887,12 @@ local function OINIU_fake_script() -- ScreenGui.Fly
 
 			if(inputObject.KeyCode==Enum.KeyCode.LeftControl) then
 				holdingShiftKey = false ControlHeld = false 
-				NormalFly:Stop()
+				down:Stop()
 			end
 
 			if(inputObject.KeyCode==Enum.KeyCode.Space) then
 				holdingSpaceKey = false SpaceHeld = false
-				NormalFly:Stop()
+				up:Stop()
 			end
 		end)
 
