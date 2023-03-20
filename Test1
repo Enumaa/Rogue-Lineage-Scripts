@@ -1259,7 +1259,7 @@ local function NQHE_fake_script() -- ScreenGui.Handler
 	Nofallbutton.MouseButton1Click:Connect(function()
 			if game.Players.LocalPlayer:FindFirstChild("Ingame") then
 				if game.Players.LocalPlayer.Character.CharacterHandler.Remotes:FindFirstChild("ApplyFallDamage") then
-					game.Players.LocalPlayer.Character.CharacterHandler.Remotes.ApplyFallDamage:Destroy()
+					game.Players.LocalPlayer.Character.CharacterHandler.Remotes.ApplyFallDamage.Name = "i think yes"
 				end
 			end	
 	end)
